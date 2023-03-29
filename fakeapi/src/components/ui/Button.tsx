@@ -18,6 +18,7 @@ const buttonVariants = cva(
         ghost:
           'bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-400 data-[state=open]:bg-transparent dark:data-[state=open]:bg-transparent',
         link: 'bg-transparent dark:bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-100 hover:bg-transparent dark:hover:bg-transparent',
+        bigButton: 'py-6 px-8 bg-light-gold dark:bg-light-gold text-slate-800 text-xl',
       },
       size: {
         default: 'h-10 py-2 px-4',
