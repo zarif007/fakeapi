@@ -5,7 +5,7 @@
 .dark .img-shadow {
     width: 250px;
     -webkit-filter: drop-shadow(5px 10px 5px #090a01e2);
-    filter: drop-shadow(5px 10px 5px #015b21e2);
+    filter: drop-shadow(3px 5px 3px #5a43dce2);
   }
   
   .img-shadow {
@@ -18,9 +18,19 @@
     background-color: white;
   }
   
-  .dark .three-d {
+  /* .dark .three-d {
     text-shadow: 0px 5px 0px #533519;
   }
   .three-d {
     text-shadow: none;
+  } */
+
+  .gradiant1-text {
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .gradiant1-bg {
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
   }

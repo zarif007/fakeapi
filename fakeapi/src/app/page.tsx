@@ -23,7 +23,7 @@ export default function Home() {
             size='lg'
             className='three-d'>
               Generate  <br />
-              <span className='text-light-gold dark:text-light-gold'>APIs with fake data</span>  <br />
+              <span className='gradiant1-text'>APIs with fake data</span>  <br />
               for your projects
           </LargeHeading>
 
@@ -34,7 +34,7 @@ export default function Home() {
             <Link
               href='/generator'
               className={`${buttonVariants({ variant: 'bigButton' })} mt-4`}>
-              <span className='font-bold'>CREATE 🏗️</span>
+              <span className='font-semibold'>CREATE 🏗️</span>
             </Link>
           </Paragraph>
 
