@@ -4,6 +4,8 @@ import type { Metadata } from 'next'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { notFound } from 'next/navigation'
+import { db } from '@/lib/db'
+import RequestApiKey from '@/components/RequestApiKey'
 
 export const metadata: Metadata = {
   title: "Fake API || Dashboard",
@@ -16,11 +18,15 @@ const Dashboard = async () => {
 
     if(!user) return notFound()
 
-    console.log(user)
+    const apiKey = await db.apiKey.findFirst({
+      where: { userId: user.user.id, enabled: true }
+    })
   return (
-    <>
-      t5rtrtret
-    </>
+    <div className='max-w-7xl mx-auto mt-16'>
+      {
+        !apiKey ? <RequestApiKey /> : <></>
+      }
+    </div>
   )
 }
 
