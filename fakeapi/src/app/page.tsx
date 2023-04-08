@@ -27,7 +27,7 @@ export default function Home() {
               for your projects
           </LargeHeading>
 
-          <Paragraph className='max-w-xl lg:text-left'>
+          <Paragraph className='max-w-xl lg:text-left '>
             Define Schema, Select data type, Click generate, Get API endpoint 
             {' '}
             <br />
@@ -45,7 +45,7 @@ export default function Home() {
               quality={100}
               style={{ objectFit: 'contain' }}
               fill
-              src='/try.png'
+              src='/pic2.gif'
               alt='dragon'
             />
           </div>

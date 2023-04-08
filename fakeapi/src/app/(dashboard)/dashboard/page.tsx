@@ -6,6 +6,7 @@ import { authOptions } from '@/lib/auth'
 import { notFound } from 'next/navigation'
 import { db } from '@/lib/db'
 import RequestApiKey from '@/components/RequestApiKey'
+import ApiDashboard from '@/components/ApiDashboard'
 
 export const metadata: Metadata = {
   title: "Fake API || Dashboard",
@@ -24,7 +25,8 @@ const Dashboard = async () => {
   return (
     <div className='max-w-7xl mx-auto mt-16'>
       {
-        !apiKey ? <RequestApiKey /> : <></>
+        // @ts-expect-error server Component
+        !apiKey ? <RequestApiKey /> : <ApiDashboard />
       }
     </div>
   )

@@ -5,6 +5,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 import { nanoid } from 'nanoid'
 import { z } from "zod";
+import { withMethods } from "@/lib/api-middlewares/with-methods";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<CreateApiData>) => {
     try {
@@ -37,3 +38,5 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<CreateApiData>)
         .json({ error: 'Internal Server Error', createdApiKey: null })
     }
 }
+
+export default withMethods(['GET'], handler)
