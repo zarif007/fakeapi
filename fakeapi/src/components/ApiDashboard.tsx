@@ -9,7 +9,6 @@ import Paragraph from './ui/Paragrapgh'
 import { Input } from './ui/Input'
 import Table from './ui/Table'
 import ApiKeyOptions from './ui/ApiKeyOptions'
-import { ApiKey as ApiKeyInterface } from '@prisma/client'
 
 const ApiDashboard = async () => {
 
@@ -21,7 +20,7 @@ const ApiDashboard = async () => {
       where: { userId: user.user.id }
     })
 
-    const activeApiKeys = apiKeys.filter((key: ApiKeyInterface) => key.enabled)
+    const activeApiKeys = apiKeys.filter((key: any) => key.enabled)
 
     if (!activeApiKeys.length) return notFound()
 
