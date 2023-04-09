@@ -20,7 +20,7 @@ const ApiDashboard = async () => {
       where: { userId: user.user.id }
     })
 
-    const activeApiKeys = apiKeys.filter((key: any) => key.enabled)
+    const activeApiKeys = apiKeys.filter((key) => key.enabled)
 
     if (!activeApiKeys.length) return notFound()
 

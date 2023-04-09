@@ -8,7 +8,7 @@ import Paragraph from "./ui/Paragrapgh";
 import CopyButton from "./ui/CopyButton";
 import { Button } from "./ui/Button";
 import { Input } from "./ui/Input";
-import { Key } from "lucide-react";
+import { FolderLockIcon } from "lucide-react";
 
 const RequestApiKey = () => {
   const [isCreating, setIsCreating] = useState<boolean>(false);
@@ -44,11 +44,11 @@ const RequestApiKey = () => {
   return (
     <div className='container md:max-w-2xl'>
       <div className='flex flex-col gap-6 items-center'>
-        <Key className='mx-auto h-12 w-12 text-gray-400' />
+        <FolderLockIcon className='mx-auto h-20 w-20 text-gray-400' />
         <LargeHeading className='text-center'>
-          Request your API key
+          <span className="gradiant1-text">Create PROJECT</span> 🚀
         </LargeHeading>
-        <Paragraph>You haven&apos;t requested an API key yet.</Paragraph>
+        <Paragraph>You haven&apos;t created any project yet.</Paragraph>
       </div>
       <form
         onSubmit={createNewApiKey}

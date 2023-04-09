@@ -7,16 +7,18 @@ import SignOutButton from './ui/SignOutButton'
 import SignInButton from './ui/SignInButton'
 import { authOptions } from '@/lib/auth'
 import MenuToggle from './ui/MenuToggle'
+import Paragraph from './ui/Paragrapgh'
+import Image from 'next/image'
 
 
 const Navbar = async () => {
   const session = await getServerSession(authOptions)
 
   return (
-    <div className='fixed backdrop-blur-sm bg-white/75 dark:bg-slate-900/75 z-50 top-0 left-0 right-0 h-20 border-b border-slate-300 dark:border-slate-700 shadow-sm flex items-center justify-between'>
+    <div className='fixed max-w-7xl mx-auto w-full backdrop-blur-sm bg-white/75 dark:bg-gray-900/75 z-50 top-0 left-0 right-0 h-16 md:h-20 border mt-4 md:md-8 lg:mt-12 border-slate-300 dark:border-slate-700 shadow-sm flex items-center justify-between rounded-md'>
       <div className='container max-w-7xl mx-auto w-full flex justify-between items-center'>
-        <Link href='/' className={`${buttonVariants({ variant: 'link' })} gradiant1-s font-extrabold text-lg`}> 
-          Fake Api
+        <Link href='/' className={`font-extrabold text-lg flex space-x-1 items-center`}> 
+          <img src="/data.png" className='h-12' />
         </Link>
 
         <div className='md:hidden'>
@@ -39,6 +41,11 @@ const Navbar = async () => {
                 href='/dashboard'>
                 Dashboard
               </Link>
+              <img 
+                src={session.user.image || ''} 
+                className='h-10 rounded-full'
+                style={{ objectFit: 'contain' }}
+                alt='dragon'/>
               <SignOutButton />
             </>
           ) : (
