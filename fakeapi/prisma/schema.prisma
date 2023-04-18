@@ -49,6 +49,21 @@ model User {
   image    String?
   accounts Account[]
   sessions Session[]
+
+  projects Project[]
+}
+
+model Project {
+  id      String  @id @default(cuid())
+  name    String
+  key     String  @unique
+  enabled Boolean @default(true)
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  String
+
+  requests ApiRequest[]
+
+  @@unique([enabled, key])
 }
 
 model ApiKey {
@@ -74,7 +89,11 @@ model ApiRequest {
   usedApiKey String
 
   ApiKey   ApiKey @relation(fields: [apiKeyId], references: [id])
+
+  Project Project @relation(fields: [projectId], references: [id])
+
   apiKeyId String
+  projectId String
 
   @@index([apiKeyId, timestamp])
 }

@@ -5,8 +5,9 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { notFound } from 'next/navigation'
 import { db } from '@/lib/db'
-import RequestApiKey from '@/components/RequestApiKey'
 import ApiDashboard from '@/components/ApiDashboard'
+import ProjectCreation from '@/components/ProjectCreation'
+import DashboardTabs from '@/components/DashboardTabs'
 
 export const metadata: Metadata = {
   title: "Fake API || Dashboard",
@@ -23,11 +24,8 @@ const Dashboard = async () => {
       where: { userId: user.user.id, enabled: true }
     })
   return (
-    <div className='max-w-7xl mx-auto mt-16'>
-      {
-        // @ts-expect-error server Component
-        !apiKey ? <RequestApiKey /> : <ApiDashboard />
-      }
+    <div className='max-w-7xl mx-auto'>
+      <DashboardTabs />
     </div>
   )
 }

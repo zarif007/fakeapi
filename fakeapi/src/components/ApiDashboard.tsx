@@ -9,15 +9,18 @@ import Paragraph from './ui/Paragrapgh'
 import { Input } from './ui/Input'
 import Table from './ui/Table'
 import ApiKeyOptions from './ui/ApiKeyOptions'
+import { useRouter } from 'next/navigation'
 
 const ApiDashboard = async () => {
 
+    const router = useRouter()
+
     const user = await getServerSession(authOptions)
 
-    if(!user) notFound()
+    if(!user) router.push('/')
 
     const apiKeys = await db.apiKey.findMany({
-      where: { userId: user.user.id }
+      where: { userId: user?.user.id }
     })
 
     const activeApiKeys = apiKeys.filter((key) => key.enabled)
@@ -39,7 +42,7 @@ const ApiDashboard = async () => {
     
   return (
     <div className='container flex flex-col gap-6'>
-      <LargeHeading className='mx-auto'>Welcome back, {user.user.name}</LargeHeading>
+      <LargeHeading className='mx-auto'>Welcome back, {user?.user.name}</LargeHeading>
       <div className='flex flex-col md:flex-row gap-4  items-center'>
         <Paragraph>Your API key:</Paragraph>
         {

@@ -2,25 +2,42 @@
 
 import React, { useState } from "react";
 import { toast } from "./ui/Toast";
-import { createApiKey } from "@/helpers/create-api-key";
 import LargeHeading from "./ui/LargeHeading";
 import Paragraph from "./ui/Paragrapgh";
-import CopyButton from "./ui/CopyButton";
 import { Button } from "./ui/Button";
 import { Input } from "./ui/Input";
 import { FolderLockIcon } from "lucide-react";
+import axios from "axios";
+import { useRouter } from "next/navigation";
+import { CreateApiData } from "@/types/api/key";
+import { CreatedProject } from "@/types/project";
 
-const RequestApiKey = () => {
+const ProjectCreation = () => {
+
+  const router = useRouter()
+
   const [isCreating, setIsCreating] = useState<boolean>(false);
-  const [apiKey, setApiKey] = useState<string | null>(null);
 
-  const createNewApiKey = async (e: React.FormEvent<HTMLFormElement>) => {
+  const [projectName, setProjectName] = useState<string | null>(null);
+
+  const createNewProject = async (e: React.FormEvent<HTMLFormElement>) => {
+
     e.preventDefault();
     setIsCreating(true);
-
     try {
-      const generatedApiKey = await createApiKey();
-      setApiKey(generatedApiKey);
+      const data = await axios.post('/api/project/create', {
+        name: projectName,
+      })
+
+      const project: CreatedProject = data.data;
+
+      toast({
+        title: "Success",
+        message: "Project Created successfully",
+        type: "success",
+      })
+
+      router.push(`/generator/${project.createdProject?.id}`)
     } catch (err) {
       if (err instanceof Error) {
         toast({
@@ -40,9 +57,10 @@ const RequestApiKey = () => {
     } finally {
       setIsCreating(false);
     }
-  };
+  }
+
   return (
-    <div className='container md:max-w-2xl'>
+    <div className='container md:max-w-2xl py-24'>
       <div className='flex flex-col gap-6 items-center'>
         <FolderLockIcon className='mx-auto h-20 w-20 text-gray-400' />
         <LargeHeading className='text-center'>
@@ -51,29 +69,24 @@ const RequestApiKey = () => {
         <Paragraph>You haven&apos;t created any project yet.</Paragraph>
       </div>
       <form
-        onSubmit={createNewApiKey}
+        onSubmit={createNewProject}
         className='mt-6 sm:flex sm:items-center'
         action='#'>
         <label htmlFor='emails' className='sr-only'>
           Your API key
         </label>
         <div className='relative rounded-md shadow-sm sm:min-w-0 sm:flex-1'>
-          {/* Show a copy icon if API key was generated successfully */}
-          {apiKey ? (
-            <CopyButton
-              className='absolute inset-y-0 right-0 animate-in fade-in duration-300'
-              valueToCopy={apiKey}
-            />
-          ) : null}
           <Input
-            readOnly
-            value={apiKey ?? ''}
-            placeholder='Request an API key to display it here'
+            required
+            className="font-semibold"
+            defaultValue={projectName ?? ''}
+            placeholder='Porject Name'
+            onChange={(e) => setProjectName(e.target.value)}
           />
         </div>
         <div className='mt-6 flex justify-center sm:mt-0 sm:ml-4 sm:flex-shrink-0'>
-          <Button disabled={!!apiKey} isLoading={isCreating}>
-            Request key
+          <Button isLoading={isCreating}>
+            Create
           </Button>
         </div>
       </form>
@@ -81,4 +94,4 @@ const RequestApiKey = () => {
   );
 };
 
-export default RequestApiKey;
+export default ProjectCreation;
