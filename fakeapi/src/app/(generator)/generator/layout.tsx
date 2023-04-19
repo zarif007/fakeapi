@@ -6,5 +6,5 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   // offset navbar height
-  return <section className='pt-28 md:pt-40'>{children}</section>
+  return <section className='pt-2'>{children}</section>
 }

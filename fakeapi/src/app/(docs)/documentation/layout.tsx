@@ -1,3 +1,4 @@
+import Navbar from '@/components/Navbar'
 import '@/styles/globals.css'
 
 export default function RootLayout({
@@ -6,5 +7,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   // offset navbar height
-  return <section className='pt-28 md:pt-40'>{children}</section>
+  return <section className='pt-28 md:pt-40'>
+    {/* @ts-expect-error server component */}
+    <Navbar />
+    {children}
+  </section>
 }

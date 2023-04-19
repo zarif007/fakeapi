@@ -15,8 +15,6 @@ const DashboardTabs: FC = () => {
         <TabsTrigger value="create" className='py-2 flex space-x-2'><BsDatabaseAdd className="h-5 w-5" /> <p>Create</p></TabsTrigger>
         <TabsTrigger value="projects" className='py-2 flex space-x-2'><VscFileBinary className="h-5 w-5" /> <p>Projects</p></TabsTrigger>
         <TabsTrigger value="stats"className='py-2 flex space-x-2'><IoStatsChartOutline className="h-5 w-5" /> <p>Stats</p></TabsTrigger>
-        {/* <TabsTrigger value='rust'>Rust</TabsTrigger>
-            <TabsTrigger value='go'>GO</TabsTrigger> */}
       </TabsList>
       <TabsContent value="create" className='h-full'>
         <ProjectCreation />

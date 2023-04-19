@@ -1,12 +1,17 @@
-import Paragraph from '@/components/ui/Paragrapgh'
+import GenertorTabs from '@/components/generator/GenertorTabs'
+import GnTopbar from '@/components/generator/GnTopbar'
 import React from 'react'
 
-const generator = () => {
+const Generator = ({ params }: any) => {
+
   return (
-    <div className='max-w-full'>
-       wewqewq
+    <div className='w-full px-2 md:px-12'>
+      {/* @ts-expect-error server component */}
+      <GnTopbar id={params.id} />
+
+      <GenertorTabs />
     </div>
   )
 }
 
-export default generator
+export default Generator
