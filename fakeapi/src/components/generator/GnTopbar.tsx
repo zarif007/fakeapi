@@ -1,6 +1,6 @@
 import { db } from '@/lib/db'
 import React from 'react'
-import LargeHeading from '../ui/LargeHeading'
+import LargeHeading, { headingVariants } from '../ui/LargeHeading'
 import { notFound } from 'next/navigation'
 import ApiDashboard from '../ApiDashboard'
 import { getServerSession } from 'next-auth'
@@ -20,7 +20,7 @@ const GnTopbar = async ({ id }: {id: string}) => {
 
   return (
     <div className="mb-12">
-      <LargeHeading>{user.user.name}/{project?.name}</LargeHeading>
+      <LargeHeading className={headingVariants({ size: 'sm' })}>{user.user.name}/{project?.name}</LargeHeading>
     </div>
   )
 }
