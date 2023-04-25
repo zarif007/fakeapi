@@ -11,6 +11,7 @@ import { BsCardImage } from "react-icons/bs";
 import { TbSortAscendingNumbers } from "react-icons/tb";
 import { AiOutlineFieldBinary, AiOutlineFile } from "react-icons/ai";
 import KeyValueComp from "./KeyValueComp";
+import { buttonVariants } from "../ui/Button";
 
 
 const typeOfType = [
@@ -93,6 +94,12 @@ const AddChildModal = ({
   })
 
 
+  const handleAddData = () => {
+    setKeyValueData({ key: "", value: "", type: "" })
+    setValueOptions({ show: false, options: [] })
+  }
+
+
   useEffect(() => {
     if(keyValueData.type !== '') {
   
@@ -101,6 +108,8 @@ const AddChildModal = ({
           setValueOptions({ options: type.subOptions, show: true })
         }
       })
+
+      setKeyValueData({ ...keyValueData, value: "" })
     }
   }, [keyValueData.type])
 
@@ -141,27 +150,25 @@ const AddChildModal = ({
                   <div className="mx-auto w-full max-w-xl rounded-2xl bg-slate-100 dark:bg-slate-900 py-2">
 
                     {
-                      (keyValueData.type !== '' && keyValueData.key !== '' && keyValueData.value !== '') && <KeyValueComp data={keyValueData} />
+                      (keyValueData.type !== '') && <KeyValueComp data={keyValueData} />
                     }
 
-                    <Input placeholder="Name/ Index/ Key" onChange={(e) => setKeyValueData({ ...keyValueData, key: e.target.value })} />
-                     
                     <Disclosure as="div" className="mt-2">
                       {({ open }) => (
                         <>
                           <Disclosure.Button className="flex h-10 w-full rounded-md border border-slate-300 bg-transparent py-2 px-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 my-2">
-                            <span>Select Type</span>
+                            <span>Select Data Type</span>
                             <ChevronUpIcon
                               className={`${
                                 open ? 'rotate-180 transform' : ''
                               } h-5 w-5 text-blue-500`}
                             />
                           </Disclosure.Button>
-                          <div className="flex flex-wrap space-x-2 ml-4">
+                          <div className="flex flex-wrap ml-4">
                           {
                             typeOfType.map((type) => {
                               return (
-                                <Disclosure.Panel key={type.name} onClick={() => setKeyValueData({ ...keyValueData, type: type.name })} className="flex px-4 pb-2 mt-1 h-10 border rounded-md  border-slate-300 bg-transparent py-2 text-md font-semibold cursor-pointer placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 items-center space-x-2">
+                                <Disclosure.Panel key={type.name} onClick={() => setKeyValueData({ ...keyValueData, type: type.name })} className="flex px-4 pb-2 mt-1 h-10 border rounded-md ml-2 border-slate-300 bg-transparent py-2 text-md font-semibold cursor-pointer placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 items-center space-x-2">
                                   {type.icon} <p>{type.name}</p>
                                 </Disclosure.Panel>
                               )
@@ -171,6 +178,10 @@ const AddChildModal = ({
                         </>
                       )}
                     </Disclosure>
+
+                    {
+                      valueOptions.show && <Input placeholder={`${keyValueData.type === 'Object' ? 'Key of the Object' : `Name of the ${keyValueData.type}` }`} onChange={(e) => setKeyValueData({ ...keyValueData, key: e.target.value })} />
+                    }
 
                     {
                       valueOptions.show && <Disclosure as="div" className="mt-1">
@@ -199,8 +210,12 @@ const AddChildModal = ({
                         )}
                       </Disclosure>
                     }
-
                   </div>
+                </div>
+                <div className="flex justify-end">
+                  <button onClick={handleAddData} className={`${buttonVariants({ variant: 'default' })} bg-blue-500`}>
+                    Confirm
+                  </button>
                 </div>
               </Dialog.Panel>
             </Transition.Child>

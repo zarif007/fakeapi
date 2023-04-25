@@ -3,7 +3,7 @@ import { Input } from '../ui/Input'
 import { BsPlus } from "react-icons/bs";
 
 
-const KeyValueComp = ({ data }: { type: string, key: string, value: string }) => {
+const KeyValueComp = ({ data }: any) => {
   return (
     <div className='flex py-1 px-3 space-x-4 rounded m-4 bg-slate-900 dark:bg-slate-100 items-center justify-center'>
       <Input defaultValue={data.key} className='dark:bg-slate-900 bg-slate-100' readOnly />
