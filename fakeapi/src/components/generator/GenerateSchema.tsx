@@ -7,6 +7,7 @@ import { MdDataObject, MdOutlineAdd } from "react-icons/md";
 import { Button, buttonVariants } from '@/components/ui/Button';
 import AddChildModal from './AddChildModal';
 import DisplayAddedChild from './DisplayAddedChild';
+import AddChildButton from './AddChildButton';
 
 const GenerateSchema = () => {
 
@@ -16,16 +17,37 @@ const GenerateSchema = () => {
 
   const [data, setData] = useState({
     key: "User",
-    value: "object",
-    type: "object",
+    value: "Object",
+    type: "Object",
     children: {
-      key: "User_name",
-      value: "string",
-      type: "string",
-      children: {},
-      counter: 1,
+      xyz: {
+        key: "User_name",
+        value: "String",
+        type: "String",
+        children: {
+          xyz: {
+            key: "post",
+            value: "Array",
+            type: "Array",
+            children: {},
+            counter: 1,
+            copiesOfChildren: 0,
+          },
+        },
+        counter: 1,
+        copiesOfChildren: 0,
+      },
+      ggg: {
+        key: "User_name",
+        value: "String",
+        type: "String",
+        children: {},
+        counter: 1,
+        copiesOfChildren: 0,
+      }
     },
     counter: 0,
+    copiesOfChildren: 1,
   });
 
   return (
@@ -36,19 +58,16 @@ const GenerateSchema = () => {
       <div className="my-12">
       <Paragraph>Define Schema</Paragraph>
         <div className='text-slate-900 dark:text-slate-50'>
-          <h1 className='text-2xl font-bold'>data = {payloadSize > 1 && '['} {'{'}</h1>
+          <h1 className='text-4xl font-bold'>data = {payloadSize > 1 && '['} {'{'}</h1>
         </div>
         
-        <DisplayAddedChild data={data} />
-        <div className='ml-8 my-2'>
-          <button onClick={() => setIsModalOpen(true)} className={buttonVariants({ variant: 'default' })}>
-            {/* <MdDataObject className="w-5 h-6" /> */}
-            <MdOutlineAdd className="w-5 h-6" />
-          </button>
+        <DisplayAddedChild data={data} setIsModalOpen={setIsModalOpen} />
+        <div className='ml-12 my-2'>
+          <AddChildButton setIsModalOpen={setIsModalOpen} />
         </div>
 
         <div className='text-slate-900 dark:text-slate-50'>
-          <h1 className='text-2xl font-bold'>{'}'}{payloadSize > 1 && ', ]'}</h1>
+          <h1 className='text-4xl font-bold'>{'}'}{payloadSize > 1 && ', ]'}</h1>
         </div>
 
         <AddChildModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
