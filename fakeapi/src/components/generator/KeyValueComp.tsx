@@ -5,9 +5,9 @@ import { BsPlus } from "react-icons/bs";
 
 const KeyValueComp = ({ data }: any) => {
   return (
-    <div className='flex py-1 px-3 space-x-4 rounded m-4 bg-slate-900 dark:bg-slate-100 items-center justify-center'>
+    <div className='flex py-1 px-3 space-x-4 rounded-md my-4 bg-slate-900 dark:bg-slate-100 items-center justify-center'>
       <Input defaultValue={data.key} className='dark:bg-slate-900 bg-slate-100' readOnly />
-      <div className="text-3xl font-bold dark:text-slate-900 text-slate-100">{data.type !== 'Object' ? '=' : ':'}</div>
+      <div className="text-4xl mb-2 font-bold dark:text-slate-900 text-slate-100">:</div>
       <Input defaultValue={data.value} className='dark:bg-slate-900 bg-slate-100' readOnly />
       {/* <div className="rounded-md dark:text-slate-100 text-slate-900 dark:bg-slate-900 bg-slate-100 p-1 cursor-pointer">
         <BsPlus

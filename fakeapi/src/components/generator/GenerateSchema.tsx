@@ -6,12 +6,27 @@ import SliderUi from '../ui/SliderUi';
 import { MdDataObject, MdOutlineAdd } from "react-icons/md";
 import { Button, buttonVariants } from '@/components/ui/Button';
 import AddChildModal from './AddChildModal';
+import DisplayAddedChild from './DisplayAddedChild';
 
 const GenerateSchema = () => {
 
   const [payloadSize, setPayloadSize] = useState<number>(1);
 
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
+  const [data, setData] = useState({
+    key: "User",
+    value: "object",
+    type: "object",
+    children: {
+      key: "User_name",
+      value: "string",
+      type: "string",
+      children: {},
+      counter: 1,
+    },
+    counter: 0,
+  });
 
   return (
     <div>
@@ -24,6 +39,7 @@ const GenerateSchema = () => {
           <h1 className='text-2xl font-bold'>data = {payloadSize > 1 && '['} {'{'}</h1>
         </div>
         
+        <DisplayAddedChild data={data} />
         <div className='ml-8 my-2'>
           <button onClick={() => setIsModalOpen(true)} className={buttonVariants({ variant: 'default' })}>
             {/* <MdDataObject className="w-5 h-6" /> */}

@@ -213,8 +213,8 @@ const AddChildModal = ({
                   </div>
                 </div>
                 <div className="flex justify-end">
-                  <button onClick={handleAddData} className={`${buttonVariants({ variant: 'default' })} bg-blue-500`}>
-                    Confirm
+                  <button onClick={handleAddData} className={`${buttonVariants({ variant: 'default' })}`}>
+                    Done
                   </button>
                 </div>
               </Dialog.Panel>
