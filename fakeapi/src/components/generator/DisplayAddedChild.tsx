@@ -5,44 +5,52 @@ import AddChildModal from './AddChildModal'
 import AddChildButton from './AddChildButton';
 
 
-const DisplayAddedChild = ({ data, setIsModalOpen }: any) => {
-  return (
-    <>
-        {
-            data === undefined ? 'loading....' : 
+const DisplayAddedChild = ({ data }: any) => {
+    const colorArray = ['#3f5efb', '#39ff14', '#fc466b']
+    return (
+        <>
+            
+            {
+                data === undefined ? 'loading....' :
                     <div className='ml-12 w-fit'>
-                <div className='flex space-x-2 items-center'>
-                    <KeyValueComp data={data} />
-                    <h1 className='text-5xl font-bold text-slate-900 dark:text-slate-50 mb-1'>
+                        <div className='flex space-x-2 items-center'>
+                            <KeyValueComp data={data} />
+                            <div className="hidden">
+                            <p className="bg-[#3f5efb]">re w</p>
+                            <p className="bg-[#39ff14]">re </p>
+                            <p className="bg-[#fc466b]">r e</p>
+                        </div>
+                            <h1 className={`text-5xl font-bold text-[${colorArray[data.counter % colorArray.length]}] mb-2`}>
+                                {
+                                    data.type === "Object" ? '{' :
+                                        (data.type === "Array" ? "[" : ",")
+                                }
+                            </h1>
+                        </div>
                         {
-                            data.type === "Object" ? '{' :
-                            (data.type === "Array" ? "[" : ",")
+                            Object.entries(data.children).length > 0 && Object.entries(data.children).map((child, index) => {
+                                return (
+                                    <DisplayAddedChild key={index} data={child[1]} />
+                                )
+                            })
                         }
-                    </h1>
-                </div>
-                {
-                    Object.entries(data.children).length > 0 &&  Object.entries(data.children).map((child, index) => {
-                        return( 
-                            <DisplayAddedChild key={index} data={child[1]} setIsModalOpen={setIsModalOpen} />
-                        )
-                    })
-                }
-                {
-                    (data.type === 'Object' || data.type === 'Array') && <div className="my-1 ml-12">
-                    <AddChildButton setIsModalOpen={setIsModalOpen} />
-                </div>
-                }
-                <h1 className='text-5xl font-bold text-slate-900 dark:text-slate-50 mb-1'>
+                        
                         {
-                            data.type === "Object" ? '},' :
-                            (data.type === "Array" ? "]," : "")
+                            (data.type === 'Object' || data.type === 'Array') && <div className="my-1 ml-12">
+                                <AddChildButton />
+                            </div>
                         }
-                </h1>
-                
-            </div>
-        }
-    </>
-  )
+                        <h1 className={`text-5xl font-bold text-[${colorArray[data.counter % colorArray.length]}] mb-2`}>
+                            {
+                                data.type === "Object" ? '},' :
+                                    (data.type === "Array" ? "]," : "")
+                            }
+                        </h1>
+
+                    </div>
+            }
+        </>
+    )
 }
 
 export default DisplayAddedChild
