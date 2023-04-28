@@ -1,1 +1,1 @@
-export const colorArray = ['#3f5efb', '#39ff14', '#fc466b']
+export const colorArray = ['#3f5efb', '#28fb00', '#fc466b']

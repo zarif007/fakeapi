@@ -5,7 +5,7 @@ export const dummyData = {
     children: {
       xyz: {
         key: "User_name",
-        value: "Object",
+        value: "Customised_Object",
         type: "Object",
         children: {
           xyz: {
@@ -27,7 +27,15 @@ export const dummyData = {
         children: {},
         counter: 1,
         copiesOfChildren: 0,
-      }
+      },
+      greregg: {
+        key: "Urrrr",
+        value: "Object",
+        type: "Object",
+        children: {},
+        counter: 1,
+        copiesOfChildren: 0,
+      },
     },
     counter: 0,
     copiesOfChildren: 1,
