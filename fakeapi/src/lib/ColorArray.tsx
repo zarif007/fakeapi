@@ -1,0 +1,1 @@
+export const colorArray = ['#3f5efb', '#39ff14', '#fc466b']

@@ -1,9 +1,7 @@
 import React, { useState, Fragment, useEffect } from "react";
-import { Dialog, Listbox, Transition } from "@headlessui/react";
+import { Dialog, Transition } from "@headlessui/react";
 import { Disclosure } from "@headlessui/react";
-import { BiUpArrow } from "react-icons/bi";
 import { Input } from "../ui/Input";
-import ListboxUi from "../ui/ListboxUi";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
 import { VscSymbolString } from "react-icons/vsc";
 import { MdDataArray, MdDataObject } from "react-icons/md";
@@ -140,18 +138,8 @@ const AddChildModal = ({
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-900 p-6 text-left align-middle shadow-xl transition-all border border-slate-900 dark:border-slate-700">
-                <Dialog.Title
-                  as="h3"
-                  className="text-lg font-medium leading-6 text-slate-900 dark:text-slate-100"
-                >
-                  Pick
-                </Dialog.Title>
                 <div className="w-full pt-4">
                   <div className="mx-auto w-full max-w-xl rounded-2xl bg-slate-100 dark:bg-slate-900 py-2">
-
-                    {
-                      (keyValueData.type !== '') && <KeyValueComp data={keyValueData} />
-                    }
 
                     <Disclosure as="div" className="mt-2">
                       {({ open }) => (

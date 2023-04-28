@@ -31,13 +31,14 @@ const ProjectCreation = () => {
 
       const project: CreatedProject = data.data;
 
+      router.push(`/generator/${project.createdProject?.id}`)
+
       toast({
         title: "Success",
         message: "Project Created successfully",
         type: "success",
       })
 
-      router.push(`/generator/${project.createdProject?.id}`)
     } catch (err) {
       if (err instanceof Error) {
         toast({
