@@ -1,6 +1,6 @@
 export const dummyData = {
     key: "User",
-    value: "Object",
+    value: "Customised_Object",
     type: "Object",
     children: {
       xyz: {
@@ -10,9 +10,18 @@ export const dummyData = {
         children: {
           xyz: {
             key: "post",
-            value: "Array",
+            value: "Customised_Array",
             type: "Array",
-            children: {},
+            children: {
+              gggerr : {
+                key: "Uni",
+                value: "String",
+                type: "String",
+                children: {},
+                counter: 3,
+                copiesOfChildren: 0,
+              },
+            },
             counter: 2,
             copiesOfChildren: 0,
           },
