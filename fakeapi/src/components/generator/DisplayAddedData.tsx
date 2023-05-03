@@ -2,16 +2,16 @@ import React, { useState } from 'react'
 import { Input } from '../ui/Input'
 import { colorArray } from '@/lib/ColorArray';
 import ColorHydration from '../ui/ColorHydration';
-import DisplayAddedChild from './DisplayAddedChild';
 import AddChildButton from './AddChildButton';
 import { BsCaretDownFill } from 'react-icons/bs';
+import { SchemaData } from '@/types/generator';
 
 
-const KeyValueComp = ({ data }: any) => {
+const DisplayAddedData = ({ data, handleAddChild }: { data: SchemaData, handleAddChild: (child: SchemaData, parent: string) => void }) => {
   const [showChild, setShowChild] = useState<boolean>(true)
   const [showBg, setShowBg] = useState<Boolean>(false)
   return (
-    <div className={`border-2 ${showBg ? `border-[${colorArray[data.counter % colorArray.length]}]` : 'border-slate-100 dark:border-slate-900'} rounded pb-2`}>
+    <div className={`ml-12 border-2 ${showBg ? `border-[${colorArray[data.counter % colorArray.length]}]` : 'border-slate-100 dark:border-slate-900'} rounded pb-2 w-fit`}>
       <ColorHydration />
       <div className="flex space-x-2 items-center" onMouseEnter={() => setShowBg(true)} onMouseLeave={() => setShowBg(false)}>
         
@@ -42,7 +42,7 @@ const KeyValueComp = ({ data }: any) => {
           {
             Object.entries(data.children).length > 0 && Object.entries(data.children).map((child, index) => {
               return (
-                <DisplayAddedChild key={index} data={child[1]} />
+                <DisplayAddedData key={index} data={child[1]} handleAddChild={handleAddChild} />
               )
             })
           }
@@ -50,7 +50,7 @@ const KeyValueComp = ({ data }: any) => {
           <div className="my-1 ml-12">
             {
               (data.value === 'Customised_Object' || data.value === 'Customised_Array') ?
-                <AddChildButton color={colorArray[(data.counter + 1) % colorArray.length]} /> : ((
+                <AddChildButton color={colorArray[(data.counter + 1) % colorArray.length]} handleAddChild={handleAddChild} parent={data.key} /> : ((
                   data.type === 'Object' || data.type === 'Array') && <DisplayValue data={data} />
                 )
             }
@@ -72,11 +72,11 @@ const KeyValueComp = ({ data }: any) => {
 
 const DisplayValue = ({ data }: any) => {
   return (
-    <div className={`flex px-2  rounded bg-[${colorArray[data.counter % colorArray.length]}] items-center justify-center w-fit`}>
+    <div className={`flex px-2  rounded bg-[${colorArray[data.counter % colorArray.length]}] items-center justify-center`}>
       <Input defaultValue={data.value} className='dark:bg-slate-900 bg-slate-100 font-bold text-md' readOnly />
     </div>
   )
 
 }
 
-export default KeyValueComp
+export default DisplayAddedData

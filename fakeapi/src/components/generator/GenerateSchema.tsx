@@ -3,28 +3,50 @@
 import React, { useState } from 'react'
 import Paragraph from '../ui/Paragrapgh';
 import SliderUi from '../ui/SliderUi';
-import DisplayAddedChild from './DisplayAddedChild';
 import AddChildButton from './AddChildButton';
 import { Input } from '../ui/Input'
 import { dummyData } from './../../lib/dummyData';
 import { BsCaretDownFill } from 'react-icons/bs';
 import { buttonVariants } from '@/components/ui/Button'
+import SwitchUi from '../ui/SwitchUi';
+import { SchemaData } from '@/types/generator';
+import SimpleBar from 'simplebar-react';
+import DisplayAddedData from './DisplayAddedData';
+import ShortUniqueId from 'short-unique-id'
 
 
 const GenerateSchema = () => {
 
-  const [payloadSize, setPayloadSize] = useState<number>(1);
+  const [objectSize, setObjectSize] = useState<number>(1);
 
-  const [data, setData] = useState(dummyData);
+  const [data, setData] = useState<SchemaData | null>(null);
 
   const [showChild, setShowChild] = useState<boolean>(true)
 
-  return (
-    <div className=''>
+  const handleAddChild = (child: SchemaData, parent: string) => {
+    console.log(child, parent)
 
-      {/* Getting main payload size */}
-      <Paragraph>Select payload size</Paragraph>
-      <SliderUi value={payloadSize} setValue={setPayloadSize} />
+    const updatedData = data;
+
+    const uid = new ShortUniqueId();
+    const keyId = uid();
+  }
+
+  return (
+    <div className='overflow-y-auto'>
+      <div className='flex justify-around md:flex-row flex-col'>
+        {/* Getting main object size */}
+        <div className="">
+          <Paragraph>Select object size</Paragraph>
+          <SliderUi value={objectSize} setValue={setObjectSize} />
+        </div>
+
+        {/* Swtich for hover border */}
+        <div>
+          <Paragraph>Hover border</Paragraph>
+          <SwitchUi />
+        </div>
+      </div>
 
       {/* Data creation */}
       <div className="my-12">
@@ -35,27 +57,27 @@ const GenerateSchema = () => {
             <Input defaultValue="data" className="dark:bg-slate-900 bg-slate-100 py-1" readOnly />
             <div className="text-4xl mb-2 font-bold dark:text-slate-900 text-slate-100">:</div>
           </div>
-          <div className="text-5xl">{payloadSize > 1 && '['} {'{'}</div>
+          <div className="text-5xl">{objectSize > 1 && '['} {'{'}</div>
         </div>
         
         {
-          showChild ? <>
+          showChild ? <div className="my-2">
             {/* Displaying added data */}
             {
-              data && <DisplayAddedChild data={data} />
+              data && <DisplayAddedData data={data} handleAddChild={handleAddChild} />
             }
 
             {/* Button to add object to data state */}
-            <div className='ml-12 my-2'>
-              <AddChildButton color="#3f5efb" />
+            <div className='ml-12'>
+              <AddChildButton color="#3f5efb" handleAddChild={handleAddChild} parent="" />
             </div>
-          </> : <div className={`text-white dark:text-slate-900 bg-[#3f5efb] cursor-pointer h-10 py-2 px-4 w-fit rounded ml-12 mt-1`} onClick={() => setShowChild(true)}>
+          </div> : <div className={`text-white dark:text-slate-900 bg-[#3f5efb] cursor-pointer h-10 py-2 px-4 w-fit rounded ml-12 mt-1`} onClick={() => setShowChild(true)}>
             .....
         </div>
         }
 
         <div className='text-slate-900 dark:text-slate-50'>
-          <h1 className='text-5xl font-bold'>{'}'}{payloadSize > 1 && ', ]'}</h1>
+          <h1 className='text-5xl font-bold'>{'}'}{objectSize > 1 && ', ]'}</h1>
         </div>
 
       </div>

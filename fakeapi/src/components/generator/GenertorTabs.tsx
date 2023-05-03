@@ -1,8 +1,11 @@
+'use client'
+
 import React from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./../ui/Tabs";
 import { GiPowerGenerator } from "react-icons/gi";
 import { MdDataObject } from "react-icons/md";
 import GenerateSchema from './GenerateSchema';
+import SimpleBar from 'simplebar-react';
 
 
 const GenertorTabs = () => {
@@ -13,7 +16,9 @@ const GenertorTabs = () => {
         <TabsTrigger value="demo" className='py-2 flex space-x-2'><MdDataObject className="h-5 w-5" /> <p>Demo</p></TabsTrigger>
       </TabsList>
       <TabsContent value="generator" className='h-full'>
-        <GenerateSchema />
+        <SimpleBar>
+          <GenerateSchema />
+        </SimpleBar>
       </TabsContent>
       <TabsContent value="demo">
 

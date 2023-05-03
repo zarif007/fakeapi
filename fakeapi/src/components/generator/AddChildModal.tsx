@@ -8,8 +8,9 @@ import { MdDataArray, MdDataObject } from "react-icons/md";
 import { BsCardImage } from "react-icons/bs";
 import { TbSortAscendingNumbers } from "react-icons/tb";
 import { AiOutlineFieldBinary, AiOutlineFile } from "react-icons/ai";
-import KeyValueComp from "./KeyValueComp";
+import KeyValueComp from "./DisplayAddedData";
 import { buttonVariants } from "../ui/Button";
+import { SchemaData } from "@/types/generator";
 
 
 const typeOfType = [
@@ -75,15 +76,23 @@ const typeOfType = [
 const AddChildModal = ({
   isOpen,
   setIsOpen,
+  handleAddChild,
+  parent
 }: {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  handleAddChild: (child: SchemaData, parent: string) => void;
+  parent: string
 }) => {
 
   const [keyValueData, setKeyValueData] = useState({
     key: "",
     value: "",
-    type: ""
+    type: "",
+    children: {},
+    counter: 0,
+    copiesOfChildren: 0,
+    isOpen: true,
   })
 
   const [valueOptions, setValueOptions] = useState<{show: boolean, options: { Name: string, Value: string }[]}>({
@@ -93,8 +102,11 @@ const AddChildModal = ({
 
 
   const handleAddData = () => {
-    setKeyValueData({ key: "", value: "", type: "" })
-    setValueOptions({ show: false, options: [] })
+    handleAddChild(keyValueData, parent)
+
+    setIsOpen(false)
+    setKeyValueData({ key: "", value: "", type: "", children: {}, counter: 0, copiesOfChildren: 0, isOpen: true })
+    setValueOptions({ show: false, options: [] })    
   }
 
 
@@ -166,7 +178,7 @@ const AddChildModal = ({
                         </>
                       )}
                     </Disclosure>
-
+                    
                     {
                       valueOptions.show && <Input placeholder={`${keyValueData.type === 'Object' ? 'Key of the Object' : `Name of the ${keyValueData.type}` }`} onChange={(e) => setKeyValueData({ ...keyValueData, key: e.target.value })} />
                     }
@@ -176,7 +188,7 @@ const AddChildModal = ({
                         {({ open }) => (
                           <>
                             <Disclosure.Button className="flex h-10 w-full rounded-md border border-slate-300 bg-transparent py-2 px-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 my-2">
-                              <span>Select {keyValueData.type} Options</span>
+                              <span>Select Options for {keyValueData.type}</span>
                               <ChevronUpIcon
                                 className={`${
                                   open ? 'rotate-180 transform' : ''
@@ -215,5 +227,4 @@ const AddChildModal = ({
 };
 
 export default AddChildModal;
-
 

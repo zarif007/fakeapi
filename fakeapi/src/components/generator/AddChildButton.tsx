@@ -3,8 +3,9 @@ import { buttonVariants } from '../ui/Button'
 import { MdOutlineAdd } from 'react-icons/md'
 import AddChildModal from './AddChildModal';
 import ColorHydration from '../ui/ColorHydration';
+import { SchemaData } from '@/types/generator';
 
-const AddChildButton = ({ color }: { color: string }) => {
+const AddChildButton = ({ color, handleAddChild, parent }: { color: string; handleAddChild: (child: SchemaData, parent: string) => void, parent: string }) => {
 
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -17,7 +18,7 @@ const AddChildButton = ({ color }: { color: string }) => {
       </button>
 
       {/* child Object creation modal */}
-      <AddChildModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
+      <AddChildModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} handleAddChild={handleAddChild} parent={parent} />
     </>
   )
 }

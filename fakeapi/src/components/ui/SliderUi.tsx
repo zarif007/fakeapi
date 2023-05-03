@@ -28,7 +28,7 @@ const SliderUi = ({ value, setValue }: { value: number, setValue: React.Dispatch
                 min={1}
                 max={400}
                 sx={{
-                  color: theme === 'light' ? 'black' : 'white'
+                  color: '#3f5efb'
                 }}
               />
             </Grid>
