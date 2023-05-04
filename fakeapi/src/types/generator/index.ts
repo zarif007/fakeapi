@@ -5,5 +5,5 @@ export interface SchemaData {
     counter: number;
     type: string;
     copiesOfChildren: Number;
-    isOpen: Boolean; 
+    showChild: Boolean; 
 }

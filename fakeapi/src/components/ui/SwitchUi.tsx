@@ -3,7 +3,7 @@ import { Switch } from '@headlessui/react'
 
 
 const SwitchUi = () => {
-    const [enabled, setEnabled] = useState(false)
+  const [enabled, setEnabled] = useState(false)
   return (
     <div className="">
       <Switch
@@ -16,7 +16,7 @@ const SwitchUi = () => {
         <span
           aria-hidden="true"
           className={`${enabled ? 'translate-x-9' : 'translate-x-0'}
-            pointer-events-none inline-block h-[24px] w-[24px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+            pointer-events-none inline-block h-[24.5px] w-[24.5px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
         />
       </Switch>
     </div>

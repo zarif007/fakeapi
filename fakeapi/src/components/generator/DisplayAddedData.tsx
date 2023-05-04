@@ -49,7 +49,7 @@ const DisplayAddedData = ({ data, handleAddChild }: { data: SchemaData, handleAd
 
           <div className="my-1 ml-12">
             {
-              (data.value === 'Customised_Object' || data.value === 'Customised_Array') ?
+              (data.value === 'Customised Object' || data.value === 'Customised Array') ?
                 <AddChildButton color={colorArray[(data.counter + 1) % colorArray.length]} handleAddChild={handleAddChild} parent={data.key} /> : ((
                   data.type === 'Object' || data.type === 'Array') && <DisplayValue data={data} />
                 )

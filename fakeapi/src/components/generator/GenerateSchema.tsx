@@ -7,10 +7,8 @@ import AddChildButton from './AddChildButton';
 import { Input } from '../ui/Input'
 import { dummyData } from './../../lib/dummyData';
 import { BsCaretDownFill } from 'react-icons/bs';
-import { buttonVariants } from '@/components/ui/Button'
 import SwitchUi from '../ui/SwitchUi';
 import { SchemaData } from '@/types/generator';
-import SimpleBar from 'simplebar-react';
 import DisplayAddedData from './DisplayAddedData';
 import ShortUniqueId from 'short-unique-id'
 
@@ -19,17 +17,35 @@ const GenerateSchema = () => {
 
   const [objectSize, setObjectSize] = useState<number>(1);
 
-  const [data, setData] = useState<SchemaData | null>(null);
+  const [schema, setSchema] = useState<SchemaData>({
+    key: "data",
+    value: "Object",
+    type: "Object",
+    children: {},
+    counter: 3,
+    copiesOfChildren: 0,
+    showChild: true,
+  });
 
   const [showChild, setShowChild] = useState<boolean>(true)
 
   const handleAddChild = (child: SchemaData, parent: string) => {
-    console.log(child, parent)
 
-    const updatedData = data;
+    const updatedSchema: SchemaData = schema;
 
     const uid = new ShortUniqueId();
-    const keyId = uid();
+    const keyId: string = uid();
+
+    if(parent === '') {
+      
+      const newChild: any = {};
+      newChild[keyId] = child;
+
+      Object.assign(updatedSchema.children, newChild);
+      setSchema(updatedSchema)
+      console.log(updatedSchema)
+      return;
+    }
   }
 
   return (
@@ -48,7 +64,7 @@ const GenerateSchema = () => {
         </div>
       </div>
 
-      {/* Data creation */}
+      {/* schema creation */}
       <div className="my-12">
         <Paragraph>Define Schema</Paragraph>
         <div className='flex space-x-2 text-slate-900 dark:text-slate-50 text-4xl font-extrabold'>
@@ -63,9 +79,17 @@ const GenerateSchema = () => {
         {
           showChild ? <div className="my-2">
             {/* Displaying added data */}
+            {/* {
+              schema && <DisplayAddedData data={schema} handleAddChild={handleAddChild} />
+            } */}
             {
-              data && <DisplayAddedData data={data} handleAddChild={handleAddChild} />
+              Object.entries(schema.children).length > 0 && Object.entries(schema.children).map((child, index) => {
+                return (
+                  <DisplayAddedData key={index} data={child[1]} handleAddChild={handleAddChild} />
+                )
+              })
             }
+
 
             {/* Button to add object to data state */}
             <div className='ml-12'>

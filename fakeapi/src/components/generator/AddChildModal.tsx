@@ -18,57 +18,57 @@ const typeOfType = [
     name: 'String',
     icon: <VscSymbolString className="h-8 w-8" />,
     subOptions: [
-      {Name: 'Random User Name', Value: 'random_username'},
-      {Name: 'Random Text', Value: 'random_text'},
+      {Name: 'Random User Name', Value: 'Random User Name'},
+      {Name: 'Random Text', Value: 'Random Text'},
     ]
   }, 
   {
     name: "Object",
     icon: <MdDataObject className="h-8 w-8" />,
     subOptions: [
-      {Name: 'Cutomised Object', Value: 'cutomised_object'},
+      {Name: 'Customised Object', Value: 'Customised Object'},
     ]
   },
   {
     name: 'Array',
     icon: <MdDataArray className="h-8 w-8" />,
     subOptions: [
-      {Name: 'Cutomised Array', Value: 'cutomised_array'},
-      {Name: 'Array of Random User Images', Value: 'random_userimage_array'},
-      {Name: 'Array of Random Images', Value: 'random_image_array'},
-      {Name: 'Array of Random User Names', Value: 'random_username_array'},
-      {Name: 'Array of Random Texts', Value: 'random_text_array'},
-      {Name: 'Array of Random Numbers', Value: 'random_number_array'},
+      {Name: 'Customised Array', Value: 'Customised Array'},
+      {Name: 'Array of Random User Images', Value: 'Array of Random User Images'},
+      {Name: 'Array of Random Images', Value: 'Array of Random Images'},
+      {Name: 'Array of Random User Names', Value: 'Array of Random User Names'},
+      {Name: 'Array of Random Texts', Value: 'Array of Random Texts'},
+      {Name: 'Array of Random Numbers', Value: 'Array of Random Numbers'},
     ]
   }, 
   {
     name: "Image",
     icon: <BsCardImage className="h-8 w-8" />,
     subOptions: [
-      {Name: 'Random Image', Value: 'Random_Image'},
-      {Name: 'Random UserImage', Value: 'Random_UserImage'},
+      {Name: 'Random Image', Value: 'Random Image'},
+      {Name: 'Random UserImage', Value: 'Random UserImage'},
     ]
   },
   {
     name: 'Number',
     icon: <TbSortAscendingNumbers className="h-8 w-8" />,
     subOptions: [
-      {Name: 'Random Number', Value: 'Random_Number'},
-      {Name: 'Select a Number', Value: 'Select_A_Number'},
+      {Name: 'Random Number', Value: 'Random Numberr'},
+      {Name: 'Select a Number', Value: 'Select a Number'},
     ]
   }, 
   {
     name: "Boolean",
     icon: <AiOutlineFieldBinary className="h-8 w-8" />,
     subOptions: [
-      {Name: 'Cutomised Object', Value: 'cutomised_object'},
+      {Name: 'Customised Object', Value: 'Customised Object'},
     ]
   },
   {
     name: "File",
     icon: <AiOutlineFile className="h-8 w-8" />,
     subOptions: [
-      {Name: 'Cutomised Object', Value: 'cutomised_object'},
+      {Name: 'Customised Object', Value: 'Customised Object'},
     ]
   },
 ]
@@ -92,7 +92,7 @@ const AddChildModal = ({
     children: {},
     counter: 0,
     copiesOfChildren: 0,
-    isOpen: true,
+    showChild: true,
   })
 
   const [valueOptions, setValueOptions] = useState<{show: boolean, options: { Name: string, Value: string }[]}>({
@@ -105,7 +105,7 @@ const AddChildModal = ({
     handleAddChild(keyValueData, parent)
 
     setIsOpen(false)
-    setKeyValueData({ key: "", value: "", type: "", children: {}, counter: 0, copiesOfChildren: 0, isOpen: true })
+    setKeyValueData({ key: "", value: "", type: "", children: {}, counter: 0, copiesOfChildren: 0, showChild: true })
     setValueOptions({ show: false, options: [] })    
   }
 
