@@ -12,79 +12,77 @@ import KeyValueComp from "./DisplayAddedData";
 import { buttonVariants } from "../ui/Button";
 import { SchemaData } from "@/types/generator";
 
-
 const typeOfType = [
   {
-    name: 'String',
+    name: "String",
     icon: <VscSymbolString className="h-8 w-8" />,
     subOptions: [
-      {Name: 'Random User Name', Value: 'Random User Name'},
-      {Name: 'Random Text', Value: 'Random Text'},
-    ]
-  }, 
+      { Name: "Random User Name", Value: "Random User Name" },
+      { Name: "Random Text", Value: "Random Text" },
+    ],
+  },
   {
     name: "Object",
     icon: <MdDataObject className="h-8 w-8" />,
-    subOptions: [
-      {Name: 'Customised Object', Value: 'Customised Object'},
-    ]
+    subOptions: [{ Name: "Customised Object", Value: "Customised Object" }],
   },
   {
-    name: 'Array',
+    name: "Array",
     icon: <MdDataArray className="h-8 w-8" />,
     subOptions: [
-      {Name: 'Customised Array', Value: 'Customised Array'},
-      {Name: 'Array of Random User Images', Value: 'Array of Random User Images'},
-      {Name: 'Array of Random Images', Value: 'Array of Random Images'},
-      {Name: 'Array of Random User Names', Value: 'Array of Random User Names'},
-      {Name: 'Array of Random Texts', Value: 'Array of Random Texts'},
-      {Name: 'Array of Random Numbers', Value: 'Array of Random Numbers'},
-    ]
-  }, 
+      { Name: "Customised Array", Value: "Customised Array" },
+      {
+        Name: "Array of Random User Images",
+        Value: "Array of Random User Images",
+      },
+      { Name: "Array of Random Images", Value: "Array of Random Images" },
+      {
+        Name: "Array of Random User Names",
+        Value: "Array of Random User Names",
+      },
+      { Name: "Array of Random Texts", Value: "Array of Random Texts" },
+      { Name: "Array of Random Numbers", Value: "Array of Random Numbers" },
+    ],
+  },
   {
     name: "Image",
     icon: <BsCardImage className="h-8 w-8" />,
     subOptions: [
-      {Name: 'Random Image', Value: 'Random Image'},
-      {Name: 'Random UserImage', Value: 'Random UserImage'},
-    ]
+      { Name: "Random Image", Value: "Random Image" },
+      { Name: "Random UserImage", Value: "Random UserImage" },
+    ],
   },
   {
-    name: 'Number',
+    name: "Number",
     icon: <TbSortAscendingNumbers className="h-8 w-8" />,
     subOptions: [
-      {Name: 'Random Number', Value: 'Random Numberr'},
-      {Name: 'Select a Number', Value: 'Select a Number'},
-    ]
-  }, 
+      { Name: "Random Number", Value: "Random Numberr" },
+      { Name: "Select a Number", Value: "Select a Number" },
+    ],
+  },
   {
     name: "Boolean",
     icon: <AiOutlineFieldBinary className="h-8 w-8" />,
-    subOptions: [
-      {Name: 'Customised Object', Value: 'Customised Object'},
-    ]
+    subOptions: [{ Name: "Customised Object", Value: "Customised Object" }],
   },
   {
     name: "File",
     icon: <AiOutlineFile className="h-8 w-8" />,
-    subOptions: [
-      {Name: 'Customised Object', Value: 'Customised Object'},
-    ]
+    subOptions: [{ Name: "Customised Object", Value: "Customised Object" }],
   },
-]
+];
 
 const AddChildModal = ({
   isOpen,
   setIsOpen,
   handleAddChild,
-  parent
+  parent,
 }: {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   handleAddChild: (child: SchemaData, parent: string) => void;
-  parent: string
+  parent: string;
 }) => {
-
   const [keyValueData, setKeyValueData] = useState({
     key: "",
     value: "",
@@ -93,39 +91,51 @@ const AddChildModal = ({
     counter: 0,
     copiesOfChildren: 0,
     showChild: true,
-  })
+  });
 
-  const [valueOptions, setValueOptions] = useState<{show: boolean, options: { Name: string, Value: string }[]}>({
+  const [valueOptions, setValueOptions] = useState<{
+    show: boolean;
+    options: { Name: string; Value: string }[];
+  }>({
     show: false,
-    options: []
-  })
-
+    options: [],
+  });
 
   const handleAddData = () => {
-    handleAddChild(keyValueData, parent)
+    handleAddChild(keyValueData, parent);
 
-    setIsOpen(false)
-    setKeyValueData({ key: "", value: "", type: "", children: {}, counter: 0, copiesOfChildren: 0, showChild: true })
-    setValueOptions({ show: false, options: [] })    
-  }
-
+    setIsOpen(false);
+    setKeyValueData({
+      key: "",
+      value: "",
+      type: "",
+      children: {},
+      counter: 0,
+      copiesOfChildren: 0,
+      showChild: true,
+    });
+    setValueOptions({ show: false, options: [] });
+  };
 
   useEffect(() => {
-    if(keyValueData.type !== '') {
-  
-      typeOfType.map(type => {
-        if(type.name === keyValueData.type){
-          setValueOptions({ options: type.subOptions, show: true })
+    if (keyValueData.type !== "") {
+      typeOfType.map((type) => {
+        if (type.name === keyValueData.type) {
+          setValueOptions({ options: type.subOptions, show: true });
         }
-      })
+      });
 
-      setKeyValueData({ ...keyValueData, value: "" })
+      setKeyValueData({ ...keyValueData, value: "" });
     }
-  }, [keyValueData.type])
+  }, [keyValueData.type]);
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={() => setIsOpen(false)}>
+      <Dialog
+        as="div"
+        className="relative z-10"
+        onClose={() => setIsOpen(false)}
+      >
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -152,7 +162,6 @@ const AddChildModal = ({
               <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-900 p-6 text-left align-middle shadow-xl transition-all border border-slate-900 dark:border-slate-700">
                 <div className="w-full pt-4">
                   <div className="mx-auto w-full max-w-xl rounded-2xl bg-slate-100 dark:bg-slate-900 py-2">
-
                     <Disclosure as="div" className="mt-2">
                       {({ open }) => (
                         <>
@@ -160,60 +169,91 @@ const AddChildModal = ({
                             <span>Select Data Type</span>
                             <ChevronUpIcon
                               className={`${
-                                open ? 'rotate-180 transform' : ''
+                                open ? "rotate-180 transform" : ""
                               } h-5 w-5 text-blue-500`}
                             />
                           </Disclosure.Button>
                           <div className="flex flex-wrap ml-4">
-                          {
-                            typeOfType.map((type) => {
+                            {typeOfType.map((type) => {
                               return (
-                                <Disclosure.Panel key={type.name} onClick={() => setKeyValueData({ ...keyValueData, type: type.name })} className="flex px-4 pb-2 mt-1 h-10 border rounded-md ml-2 border-slate-300 bg-transparent py-2 text-md font-semibold cursor-pointer placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 items-center space-x-2">
+                                <Disclosure.Panel
+                                  key={type.name}
+                                  onClick={() =>
+                                    setKeyValueData({
+                                      ...keyValueData,
+                                      type: type.name,
+                                    })
+                                  }
+                                  className="flex px-4 pb-2 mt-1 h-10 border rounded-md ml-2 border-slate-300 bg-transparent py-2 text-md font-semibold cursor-pointer placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 items-center space-x-2"
+                                >
                                   {type.icon} <p>{type.name}</p>
                                 </Disclosure.Panel>
-                              )
-                            })
-                          }
+                              );
+                            })}
                           </div>
                         </>
                       )}
                     </Disclosure>
-                    
-                    {
-                      valueOptions.show && <Input placeholder={`${keyValueData.type === 'Object' ? 'Key of the Object' : `Name of the ${keyValueData.type}` }`} onChange={(e) => setKeyValueData({ ...keyValueData, key: e.target.value })} />
-                    }
 
-                    {
-                      valueOptions.show && <Disclosure as="div" className="mt-1">
+                    {valueOptions.show && (
+                      <Input
+                        placeholder={`${
+                          keyValueData.type === "Object"
+                            ? "Key of the Object"
+                            : `Name of the ${keyValueData.type}`
+                        }`}
+                        onChange={(e) =>
+                          setKeyValueData({
+                            ...keyValueData,
+                            key: e.target.value,
+                          })
+                        }
+                      />
+                    )}
+
+                    {valueOptions.show && (
+                      <Disclosure as="div" className="mt-1">
                         {({ open }) => (
                           <>
                             <Disclosure.Button className="flex h-10 w-full rounded-md border border-slate-300 bg-transparent py-2 px-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 my-2">
-                              <span>Select Options for {keyValueData.type}</span>
+                              <span>
+                                Select Options for {keyValueData.type}
+                              </span>
                               <ChevronUpIcon
                                 className={`${
-                                  open ? 'rotate-180 transform' : ''
+                                  open ? "rotate-180 transform" : ""
                                 } h-5 w-5 text-blue-500`}
                               />
                             </Disclosure.Button>
                             <div className="ml-4">
-                            {
-                              valueOptions.options.map((option, index) => {
+                              {valueOptions.options.map((option, index) => {
                                 return (
-                                  <Disclosure.Panel key={index} onClick={() => setKeyValueData({ ...keyValueData, value: option.Value })} className="flex h-10 w-full rounded-md border border-slate-300 bg-transparent py-2 px-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 my-2 cursor-pointer">
+                                  <Disclosure.Panel
+                                    key={index}
+                                    onClick={() =>
+                                      setKeyValueData({
+                                        ...keyValueData,
+                                        value: option.Value,
+                                      })
+                                    }
+                                    className="flex h-10 w-full rounded-md border border-slate-300 bg-transparent py-2 px-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 my-2 cursor-pointer"
+                                  >
                                     <p>{option.Name}</p>
                                   </Disclosure.Panel>
-                                )
-                              })
-                            }
+                                );
+                              })}
                             </div>
                           </>
                         )}
                       </Disclosure>
-                    }
+                    )}
                   </div>
                 </div>
                 <div className="flex justify-end">
-                  <button onClick={handleAddData} className={`${buttonVariants({ variant: 'default' })}`}>
+                  <button
+                    onClick={handleAddData}
+                    className={`${buttonVariants({ variant: "default" })}`}
+                  >
                     Done
                   </button>
                 </div>
@@ -227,4 +267,3 @@ const AddChildModal = ({
 };
 
 export default AddChildModal;
-

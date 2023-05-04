@@ -6,7 +6,7 @@ import LargeHeading from "./ui/LargeHeading";
 import Paragraph from "./ui/Paragrapgh";
 import { Button } from "./ui/Button";
 import { Input } from "./ui/Input";
-import { FolderLockIcon } from "lucide-react";
+import { AiOutlineApi } from "react-icons/ai";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { CreateApiData } from "@/types/api/key";
@@ -63,7 +63,7 @@ const ProjectCreation = () => {
   return (
     <div className='container md:max-w-2xl py-24'>
       <div className='flex flex-col gap-6 items-center'>
-        <FolderLockIcon className='mx-auto h-20 w-20 text-gray-400' />
+        <AiOutlineApi className='mx-auto h-20 w-20 text-gray-400' />
         <LargeHeading className='text-center'>
           <span className="gradiant1-text">Create PROJECT</span> 🚀
         </LargeHeading>
@@ -79,7 +79,7 @@ const ProjectCreation = () => {
         <div className='relative rounded-md shadow-sm sm:min-w-0 sm:flex-1'>
           <Input
             required
-            className="font-semibold"
+            className="font-semibold w-full"
             defaultValue={projectName ?? ''}
             placeholder='Porject Name'
             onChange={(e) => setProjectName(e.target.value)}
