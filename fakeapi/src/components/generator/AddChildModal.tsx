@@ -77,11 +77,13 @@ const AddChildModal = ({
   setIsOpen,
   handleAddChild,
   parent,
+  parentsId
 }: {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  handleAddChild: (child: SchemaData, parent: string) => void;
-  parent: string;
+  handleAddChild: (child: SchemaData, parentsId: string) => void;
+  parent: SchemaData;
+  parentsId: string;
 }) => {
   const [keyValueData, setKeyValueData] = useState({
     key: "",
@@ -92,6 +94,7 @@ const AddChildModal = ({
     copiesOfChildren: 0,
     showChild: true,
   });
+  console.log(parent.type, parentsId)
 
   const [valueOptions, setValueOptions] = useState<{
     show: boolean;
@@ -101,8 +104,21 @@ const AddChildModal = ({
     options: [],
   });
 
+  const [errors, setErrors] = useState<string>('');
+
   const handleAddData = () => {
-    handleAddChild(keyValueData, parent);
+    if(keyValueData.key === '') {
+      setErrors(`Add name for the ${keyValueData.type}`)
+      return;
+    }
+    if(keyValueData.value === '') {
+      setErrors(`Add option for the ${keyValueData.type}`)
+      return;
+    }
+
+    setErrors('')
+
+    handleAddChild(keyValueData, parentsId);
 
     setIsOpen(false);
     setKeyValueData({
@@ -116,6 +132,27 @@ const AddChildModal = ({
     });
     setValueOptions({ show: false, options: [] });
   };
+
+  const ValueInput = () => {
+    return (
+      <Input
+          placeholder={`${
+            keyValueData.type === "Object"
+              ? "Key of the Object"
+              : `Name of the ${keyValueData.type}`
+          }`}
+          defaultValue={Object.entries(parent.children).length}
+          onChange={(e) =>
+            setKeyValueData({
+              ...keyValueData,
+              key: e.target.value,
+            })
+          }
+          className="w-full"
+          readOnly
+        />
+    )
+  }
 
   useEffect(() => {
     if (keyValueData.type !== "") {
@@ -196,19 +233,22 @@ const AddChildModal = ({
                     </Disclosure>
 
                     {valueOptions.show && (
-                      <Input
-                        placeholder={`${
-                          keyValueData.type === "Object"
-                            ? "Key of the Object"
-                            : `Name of the ${keyValueData.type}`
-                        }`}
-                        onChange={(e) =>
-                          setKeyValueData({
-                            ...keyValueData,
-                            key: e.target.value,
-                          })
-                        }
-                      />
+                      parent.type !== "Array" ? (
+                        <Input
+                          placeholder={`${
+                            keyValueData.type === "Object"
+                              ? "Key of the Object"
+                              : `Name of the ${keyValueData.type}`
+                          }`}
+                          onChange={(e) =>
+                            setKeyValueData({
+                              ...keyValueData,
+                              key: e.target.value,
+                            })
+                          }
+                          className="w-full"
+                        />
+                      ) : <ValueInput />
                     )}
 
                     {valueOptions.show && (
@@ -249,6 +289,7 @@ const AddChildModal = ({
                     )}
                   </div>
                 </div>
+                <p className="text-sm font-semibold text-red-500">{errors}</p>
                 <div className="flex justify-end">
                   <button
                     onClick={handleAddData}

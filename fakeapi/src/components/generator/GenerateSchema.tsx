@@ -11,6 +11,8 @@ import SwitchUi from "../ui/SwitchUi";
 import { SchemaData } from "@/types/generator";
 import DisplayAddedData from "./DisplayAddedData";
 import ShortUniqueId from "short-unique-id";
+import { schemaToDataDecoder } from "../../lib/SchemaToDataDecoder";
+import { buttonVariants } from '@/components/ui/Button';
 
 const GenerateSchema = () => {
   const [objectSize, setObjectSize] = useState<number>(1);
@@ -29,15 +31,16 @@ const GenerateSchema = () => {
 
   const [showChild, setShowChild] = useState<boolean>(true);
 
+  const [decodedData, setDecodedData] = useState({});
+
   const findParentAndUpdate = (
     child: SchemaData,
-    parent: string,
+    parentsId: string,
     updateAbleSchema: SchemaData,
-    parentsKey: string
+    key: string
   ) => {
-    console.log(parentsKey, parent);
 
-    if (parentsKey === parent) {
+    if (key === parentsId) {
       const uid = new ShortUniqueId();
       const keyId: string = uid();
 
@@ -51,16 +54,25 @@ const GenerateSchema = () => {
 
     Object.entries(updateAbleSchema.children).length > 0 &&
       Object.entries(updateAbleSchema.children).map((NSchema) => {
-        findParentAndUpdate(child, parent, NSchema[1], NSchema[0]);
+        findParentAndUpdate(child, parentsId, NSchema[1], NSchema[0]);
       });
   };
 
-  const handleAddChild = (child: SchemaData, parent: string) => {
+  const handleAddChild = (child: SchemaData, parentsId: string) => {
     const updateAbleSchema: SchemaData = schema;
-    findParentAndUpdate(child, parent, updateAbleSchema, "");
+    findParentAndUpdate(child, parentsId, updateAbleSchema, "");
     setSchema(updateAbleSchema);
-    console.log(updateAbleSchema);
   };
+
+  const handleSubmit = () => {
+    const data: any = {}
+    Object.entries(schema.children).length > 0 && Object.entries(schema.children).map(child => {
+      Object.assign(data, schemaToDataDecoder(child[1]))
+    })
+
+    setDecodedData(data)
+    console.log(data)
+  }
 
   return (
     <div className="overflow-y-auto">
@@ -114,8 +126,9 @@ const GenerateSchema = () => {
                   <DisplayAddedData
                     key={index}
                     data={child[1]}
-                    parent={child[0]}
+                    parent={schema}
                     handleAddChild={handleAddChild}
+                    parentsId={child[0]}
                   />
                 );
               })}
@@ -125,7 +138,8 @@ const GenerateSchema = () => {
               <AddChildButton
                 color="#3f5efb"
                 handleAddChild={handleAddChild}
-                parent=""
+                parent={schema}
+                parentsId=""
               />
             </div>
           </div>
@@ -143,6 +157,15 @@ const GenerateSchema = () => {
             {"}"}
             {objectSize > 1 && ", ]"}
           </h1>
+        </div>
+
+        <div className="flex justify-end">
+          <button
+            onClick={handleSubmit}
+            className={`${buttonVariants({ variant: "default" })}`}
+          >
+            Done
+          </button>
         </div>
       </div>
     </div>

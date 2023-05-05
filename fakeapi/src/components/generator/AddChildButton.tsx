@@ -9,10 +9,12 @@ const AddChildButton = ({
   color,
   handleAddChild,
   parent,
+  parentsId,
 }: {
   color: string;
-  handleAddChild: (child: SchemaData, parent: string) => void;
-  parent: string;
+  handleAddChild: (child: SchemaData, parentsId: string) => void;
+  parent: SchemaData;
+  parentsId: string;
 }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -32,6 +34,7 @@ const AddChildButton = ({
         isOpen={isModalOpen}
         setIsOpen={setIsModalOpen}
         handleAddChild={handleAddChild}
+        parentsId={parentsId}
         parent={parent}
       />
     </>

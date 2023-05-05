@@ -10,10 +10,12 @@ const DisplayAddedData = ({
   data,
   parent,
   handleAddChild,
+  parentsId
 }: {
   data: SchemaData;
-  parent: string;
-  handleAddChild: (child: SchemaData, parent: string) => void;
+  parent: SchemaData;
+  handleAddChild: (child: SchemaData, parentsId: string) => void;
+  parentsId: string;
 }) => {
   const [showChild, setShowChild] = useState<boolean>(true);
   const [showBg, setShowBg] = useState<Boolean>(false);
@@ -79,7 +81,8 @@ const DisplayAddedData = ({
                 <DisplayAddedData
                   key={index}
                   data={child[1]}
-                  parent={child[0]}
+                  parent={data}
+                  parentsId={child[0]}
                   handleAddChild={handleAddChild}
                 />
               );
@@ -92,6 +95,7 @@ const DisplayAddedData = ({
                 color={colorArray[(data.counter + 1) % colorArray.length]}
                 handleAddChild={handleAddChild}
                 parent={parent}
+                parentsId={parentsId}
               />
             ) : (
               (data.type === "Object" || data.type === "Array") && (
