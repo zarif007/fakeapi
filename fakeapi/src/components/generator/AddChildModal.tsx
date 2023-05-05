@@ -107,12 +107,16 @@ const AddChildModal = ({
 
   const [errors, setErrors] = useState<string>('');
 
-  const [currentParent, setCurrentParent] = useState<SchemaData>();
-
   const handleAddData = () => {
     if(keyValueData.key === '') {
-      setErrors(`Add name for the ${keyValueData.type}`)
-      return;
+      if(parent.type === 'Array'){
+        const updated = keyValueData;
+        updated.key = (Object.entries(parent.children).length).toString()
+        setKeyValueData(updated)
+      } else {
+        setErrors(`Add name for the ${keyValueData.type}`)
+        return;
+      }
     }
     if(keyValueData.value === '') {
       setErrors(`Add option for the ${keyValueData.type}`)
@@ -120,6 +124,8 @@ const AddChildModal = ({
     }
 
     setErrors('')
+
+    console.log(keyValueData)
 
     handleAddChild(keyValueData, parentsId);
 
@@ -147,11 +153,6 @@ const AddChildModal = ({
       setKeyValueData({ ...keyValueData, value: "" });
     }
   }, [keyValueData.type]);
-
-  useEffect(() => {
-    setCurrentParent(parent);
-    
-  }, [])
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -232,6 +233,8 @@ const AddChildModal = ({
                         })
                       }
                       className="w-full"
+                      defaultValue={parent.type === 'Array' ? Object.entries(parent.children).length : ''}
+                      readOnly={parent.type === 'Array'}
                     />}
 
                     {valueOptions.show && (

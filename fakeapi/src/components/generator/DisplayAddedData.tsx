@@ -94,7 +94,7 @@ const DisplayAddedData = ({
               <AddChildButton
                 color={colorArray[(data.counter + 1) % colorArray.length]}
                 handleAddChild={handleAddChild}
-                parent={parent}
+                parent={data}
                 parentsId={parentsId}
               />
             ) : (
@@ -126,11 +126,11 @@ const DisplayAddedData = ({
   );
 };
 
-const DisplayValue = ({ data }: any) => {
+const DisplayValue = ({ data }: { data: SchemaData }) => {
   return (
     <div
       className={`flex px-2  rounded bg-[${
-        colorArray[data.counter % colorArray.length]
+        colorArray[(data.counter + 1) % colorArray.length]
       }] items-center justify-center`}
     >
       <Input
