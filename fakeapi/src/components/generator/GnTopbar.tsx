@@ -6,17 +6,11 @@ import ApiDashboard from '../ApiDashboard'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 
-const GnTopbar = async ({ id }: {id: string}) => {
+const GnTopbar = async ({ project }: {project: any}) => {
 
-    const user = await getServerSession(authOptions)
+  const user = await getServerSession(authOptions)
 
-    if(!id || !user) notFound()
-
-    const project = await db.project.findFirst({
-        where: {
-          id: id
-        }
-      })
+  if(!user) notFound()
 
   return (
     <div className="mb-12">

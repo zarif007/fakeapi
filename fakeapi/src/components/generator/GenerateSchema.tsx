@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import Paragraph from "../ui/Paragrapgh";
 import SliderUi from "../ui/SliderUi";
 import AddChildButton from "./AddChildButton";
@@ -14,7 +14,7 @@ import ShortUniqueId from "short-unique-id";
 import { schemaToDataDecoder } from "../../lib/SchemaToDataDecoder";
 import { buttonVariants } from '@/components/ui/Button';
 
-const GenerateSchema = () => {
+const GenerateSchema = ({ project }: { project: any }) => {
   const [objectSize, setObjectSize] = useState<number>(1);
 
   const [schema, setSchema] = useState<SchemaData>({
@@ -23,7 +23,7 @@ const GenerateSchema = () => {
     type: "Object",
     children: {},
     counter: -1,
-    copiesOfChildren: 0,
+    copies: 1,
     showChild: true,
   });
 
@@ -69,9 +69,8 @@ const GenerateSchema = () => {
     Object.entries(schema.children).length > 0 && Object.entries(schema.children).map(child => {
       Object.assign(data, schemaToDataDecoder(child[1]))
     })
-
-    setDecodedData(data)
     console.log(data)
+    setDecodedData(data)
   }
 
   return (

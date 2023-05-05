@@ -4,6 +4,6 @@ export interface SchemaData {
     children: object | {};
     counter: number;
     type: string;
-    copiesOfChildren: Number;
+    copies: Number;
     showChild: Boolean; 
 }

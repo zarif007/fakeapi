@@ -34,7 +34,7 @@ const DisplayAddedData = ({
         onMouseLeave={() => setShowBg(false)}
       >
         <div
-          className={`flex px-2 space-x-2 rounded my-2 bg-[${
+          className={`flex px-2 space-x-2 rounded my-1 bg-[${
             colorArray[data.counter % colorArray.length]
           }] items-center justify-center`}
         >

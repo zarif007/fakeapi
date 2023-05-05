@@ -93,7 +93,7 @@ const AddChildModal = ({
     type: "",
     children: {},
     counter: 0,
-    copiesOfChildren: 0,
+    copies: 1,
     showChild: true,
   });
 
@@ -136,7 +136,7 @@ const AddChildModal = ({
       type: "",
       children: {},
       counter: 0,
-      copiesOfChildren: 0,
+      copies: 1,
       showChild: true,
     });
     setValueOptions({ show: false, options: [] });

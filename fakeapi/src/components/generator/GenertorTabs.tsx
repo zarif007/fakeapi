@@ -8,7 +8,7 @@ import GenerateSchema from './GenerateSchema';
 import SimpleBar from 'simplebar-react';
 
 
-const GenertorTabs = () => {
+const GenertorTabs = ({ project }: { project: any }) => {
   return (
     <Tabs defaultValue="generator" className="overflow-x-auto">
       <TabsList>
@@ -17,7 +17,7 @@ const GenertorTabs = () => {
       </TabsList>
       <TabsContent value="generator" className='h-full'>
         <SimpleBar>
-          <GenerateSchema />
+          <GenerateSchema project={project} />
         </SimpleBar>
       </TabsContent>
       <TabsContent value="demo">

@@ -23,7 +23,16 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             data: {
                 key: nanoid(),
                 name: req.body.name,
-                authorId: user.id
+                authorId: user.id,
+                schema: {
+                    key: "data",
+                    value: "Object",
+                    type: "Object",
+                    children: {},
+                    counter: -1,
+                    copies: 1,
+                    showChild: true,
+                }
             }
         })
 
