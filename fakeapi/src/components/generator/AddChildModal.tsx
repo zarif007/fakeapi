@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, Fragment, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Disclosure } from "@headlessui/react";
@@ -94,7 +96,6 @@ const AddChildModal = ({
     copiesOfChildren: 0,
     showChild: true,
   });
-  console.log(parent.type, parentsId)
 
   const [valueOptions, setValueOptions] = useState<{
     show: boolean;
@@ -105,6 +106,8 @@ const AddChildModal = ({
   });
 
   const [errors, setErrors] = useState<string>('');
+
+  const [currentParent, setCurrentParent] = useState<SchemaData>();
 
   const handleAddData = () => {
     if(keyValueData.key === '') {
@@ -133,27 +136,6 @@ const AddChildModal = ({
     setValueOptions({ show: false, options: [] });
   };
 
-  const ValueInput = () => {
-    return (
-      <Input
-          placeholder={`${
-            keyValueData.type === "Object"
-              ? "Key of the Object"
-              : `Name of the ${keyValueData.type}`
-          }`}
-          defaultValue={Object.entries(parent.children).length}
-          onChange={(e) =>
-            setKeyValueData({
-              ...keyValueData,
-              key: e.target.value,
-            })
-          }
-          className="w-full"
-          readOnly
-        />
-    )
-  }
-
   useEffect(() => {
     if (keyValueData.type !== "") {
       typeOfType.map((type) => {
@@ -165,6 +147,11 @@ const AddChildModal = ({
       setKeyValueData({ ...keyValueData, value: "" });
     }
   }, [keyValueData.type]);
+
+  useEffect(() => {
+    setCurrentParent(parent);
+    
+  }, [])
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -232,24 +219,20 @@ const AddChildModal = ({
                       )}
                     </Disclosure>
 
-                    {valueOptions.show && (
-                      parent.type !== "Array" ? (
-                        <Input
-                          placeholder={`${
-                            keyValueData.type === "Object"
-                              ? "Key of the Object"
-                              : `Name of the ${keyValueData.type}`
-                          }`}
-                          onChange={(e) =>
-                            setKeyValueData({
-                              ...keyValueData,
-                              key: e.target.value,
-                            })
-                          }
-                          className="w-full"
-                        />
-                      ) : <ValueInput />
-                    )}
+                    {(valueOptions.show) && <Input
+                      placeholder={`${
+                        keyValueData.type === "Object"
+                          ? "Key of the Object"
+                          : `Name of the ${keyValueData.type}`
+                      }`}
+                      onChange={(e) =>
+                        setKeyValueData({
+                          ...keyValueData,
+                          key: e.target.value,
+                        })
+                      }
+                      className="w-full"
+                    />}
 
                     {valueOptions.show && (
                       <Disclosure as="div" className="mt-1">
