@@ -8,24 +8,19 @@ import { Input } from "../ui/Input";
 import { dummyData } from "./../../lib/dummyData";
 import { BsCaretDownFill } from "react-icons/bs";
 import SwitchUi from "../ui/SwitchUi";
-import { SchemaData } from "@/types/generator";
+import { ProjectInterface, SchemaData } from "@/types/generator";
 import DisplayAddedData from "./DisplayAddedData";
 import ShortUniqueId from "short-unique-id";
 import { schemaToDataDecoder } from "../../lib/SchemaToDataDecoder";
 import { buttonVariants } from '@/components/ui/Button';
+import { db } from "@/lib/db";
+import axios from "axios";
+import { toast } from "../ui/Toast";
 
-const GenerateSchema = ({ project }: { project: any }) => {
+const GenerateSchema = ({ project }: { project: ProjectInterface }) => {
   const [objectSize, setObjectSize] = useState<number>(1);
 
-  const [schema, setSchema] = useState<SchemaData>({
-    key: "data",
-    value: "Object",
-    type: "Object",
-    children: {},
-    counter: -1,
-    copies: 1,
-    showChild: true,
-  });
+  const [schema, setSchema] = useState<SchemaData>(project.schema);
 
   const [keyIds, setKeyIds] = useState<string[]>([]);
 
@@ -64,13 +59,44 @@ const GenerateSchema = ({ project }: { project: any }) => {
     setSchema(updateAbleSchema);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const data: any = {}
     Object.entries(schema.children).length > 0 && Object.entries(schema.children).map(child => {
       Object.assign(data, schemaToDataDecoder(child[1]))
     })
     console.log(data)
     setDecodedData(data)
+
+  
+    try {
+      await axios.patch('/api/project/update', {
+        id: project.id,
+        schema
+      })
+
+      toast({
+        title: "Success",
+        message: "Project updated successfully",
+        type: "success",
+      })
+
+    } catch (err) {
+      if (err instanceof Error) {
+        toast({
+          title: "Error",
+          message: err.message,
+          type: "error",
+        });
+
+        return;
+      }
+
+      toast({
+        title: "Error",
+        message: "Something went wrong",
+        type: "error",
+      });
+    }
   }
 
   return (

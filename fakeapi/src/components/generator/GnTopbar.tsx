@@ -5,8 +5,9 @@ import { notFound } from 'next/navigation'
 import ApiDashboard from '../ApiDashboard'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
+import { ProjectInterface } from '@/types/generator'
 
-const GnTopbar = async ({ project }: {project: any}) => {
+const GnTopbar = async ({ project }: {project: ProjectInterface}) => {
 
   const user = await getServerSession(authOptions)
 

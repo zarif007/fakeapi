@@ -7,3 +7,14 @@ export interface SchemaData {
     copies: Number;
     showChild: Boolean; 
 }
+
+export interface ProjectInterface {
+    authorId: string;
+    createdAt: string;
+    enabled: boolean;
+    id: string;
+    key: string;
+    name: string;
+    updatedAt: string;
+    schema: SchemaData
+}
