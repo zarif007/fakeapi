@@ -17,7 +17,7 @@ import { db } from "@/lib/db";
 import axios from "axios";
 import { toast } from "../ui/Toast";
 
-const GenerateSchema = ({ project }: { project: ProjectInterface }) => {
+const GenerateSchema = ({ project }: { project: any }) => {
   const [objectSize, setObjectSize] = useState<number>(1);
 
   const [schema, setSchema] = useState<SchemaData>(project.schema);
@@ -69,10 +69,12 @@ const GenerateSchema = ({ project }: { project: ProjectInterface }) => {
 
   
     try {
-      await axios.patch('/api/project/update', {
+      const d = await axios.patch('/api/project/update', {
         id: project.id,
         schema
       })
+
+      console.log(d)
 
       toast({
         title: "Success",
