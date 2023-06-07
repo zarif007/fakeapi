@@ -1,14 +1,14 @@
 'use client'
 
 import React from 'react'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./../ui/Tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/Tabs";
 import { GiPowerGenerator } from "react-icons/gi";
 import { MdDataObject } from "react-icons/md";
 import GenerateSchema from './GenerateSchema';
 import SimpleBar from 'simplebar-react';
 
 
-const GenertorTabs = ({ project }: { project: any }) => {
+const GeneratorTabs = ({ project }: { project: any }) => {
   return (
     <Tabs defaultValue="generator" className="overflow-x-auto">
       <TabsList>
@@ -27,4 +27,4 @@ const GenertorTabs = ({ project }: { project: any }) => {
   )
 }
 
-export default GenertorTabs
+export default GeneratorTabs

@@ -15,7 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<CreateApiData>)
 
         if(!user) {
             return res.status(401).json({
-                error: 'SignIn to perfotm this action',
+                error: 'SignIn to perform this action',
                 createdApiKey: null,
             })
         }

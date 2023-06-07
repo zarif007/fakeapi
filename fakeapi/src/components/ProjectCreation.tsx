@@ -67,7 +67,7 @@ const ProjectCreation = () => {
         <LargeHeading className='text-center'>
           <span className="gradiant1-text">Create PROJECT</span> 🚀
         </LargeHeading>
-        <Paragraph>You haven&apos;t created any project yet.</Paragraph>
+        {/* <Paragraph>You haven&apos;t created any project yet.</Paragraph> */}
       </div>
       <form
         onSubmit={createNewProject}

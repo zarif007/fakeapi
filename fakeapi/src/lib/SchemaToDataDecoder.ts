@@ -1,7 +1,7 @@
 import { randomUsernames } from "@/samples/RandomUsernames";
 import { SchemaData } from "@/types/generator"
 
-export const schemaToDataDecoder = (schema: SchemaData) => {
+export const schemaToDataDecoder = (schema: any) => {
     // console.log(schema)
     if(schema.type === 'Object'){
         const obj: any = {};

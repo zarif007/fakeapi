@@ -10,9 +10,9 @@ const ColorHydration = () => {
             <p className={`bg-[#3f5efb]`}>re w</p>
             <p className="bg-[#ca69e3]">re </p>
             <p className="bg-[#fc466b]">r e</p>
-            <p className={`boder border-[#3f5efb]`}>re w</p>
-            <p className="boder border-[#ca69e3]">re </p>
-            <p className="boder border-[#fc466b]">r e</p>
+            <p className={`border border-[#3f5efb]`}>re w</p>
+            <p className="border border-[#ca69e3]">re </p>
+            <p className="border border-[#fc466b]">r e</p>
         </div>
     </>
   )

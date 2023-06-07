@@ -172,7 +172,7 @@ const GenerateSchema = ({ project }: { project: any }) => {
           </div>
         ) : (
           <div
-            className={`text-white dark:text-slate-900 bg-[#3f5efb] cursor-pointer h-10 py-2 px-4 w-fit rounded ml-12 mt-1`}
+            className={`text-white dark:text-slate-900 bg-[#3f5efb] cursor-pointer h-10 py-2 px-4 w-fit rounded ml-12 my-2`}
             onClick={() => setShowChild(true)}
           >
             .....
