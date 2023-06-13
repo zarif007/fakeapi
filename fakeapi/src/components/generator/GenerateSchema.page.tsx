@@ -12,7 +12,7 @@ import { ProjectInterface, SchemaData } from "@/types/generator";
 import DisplayAddedData from "./DisplayAddedData.page";
 import ShortUniqueId from "short-unique-id";
 import { schemaToDataDecoder } from "../../lib/SchemaToDataDecoder";
-import { buttonVariants } from '@/components/ui/Button';
+import { buttonVariants } from "@/components/ui/Button";
 import { db } from "@/lib/db";
 import axios from "axios";
 import { toast } from "../ui/Toast";
@@ -34,7 +34,6 @@ const GenerateSchema = ({ project }: { project: any }) => {
     updateAbleSchema: SchemaData,
     key: string
   ) => {
-
     if (key === parentsId) {
       const uid = new ShortUniqueId();
       const keyId: string = uid();
@@ -49,7 +48,12 @@ const GenerateSchema = ({ project }: { project: any }) => {
 
     Object.entries(updateAbleSchema.children).length > 0 &&
       Object.entries(updateAbleSchema.children).map((NSchema) => {
-        findParentAndUpdate(child, parentsId, NSchema[1], NSchema[0]);
+        findParentAndUpdate(
+          child,
+          parentsId,
+          NSchema[1] as SchemaData,
+          NSchema[0]
+        );
       });
   };
 
@@ -60,28 +64,27 @@ const GenerateSchema = ({ project }: { project: any }) => {
   };
 
   const handleSubmit = async () => {
-    const data: any = {}
-    Object.entries(schema.children).length > 0 && Object.entries(schema.children).map(child => {
-      Object.assign(data, schemaToDataDecoder(child[1]))
-    })
-    console.log(data)
-    setDecodedData(data)
+    const data: any = {};
+    Object.entries(schema.children).length > 0 &&
+      Object.entries(schema.children).map((child) => {
+        Object.assign(data, schemaToDataDecoder(child[1]));
+      });
+    console.log(data);
+    setDecodedData(data);
 
-  
     try {
-      const d = await axios.patch('/api/project/update', {
+      const d = await axios.patch("/api/project/update", {
         id: project.id,
-        schema
-      })
+        schema,
+      });
 
-      console.log(d)
+      console.log(d);
 
       toast({
         title: "Success",
         message: "Project updated successfully",
         type: "success",
-      })
-
+      });
     } catch (err) {
       if (err instanceof Error) {
         toast({
@@ -99,7 +102,7 @@ const GenerateSchema = ({ project }: { project: any }) => {
         type: "error",
       });
     }
-  }
+  };
 
   return (
     <div className="overflow-y-auto">
@@ -152,7 +155,7 @@ const GenerateSchema = ({ project }: { project: any }) => {
                 return (
                   <DisplayAddedData
                     key={index}
-                    data={child[1]}
+                    data={child[1] as SchemaData}
                     parent={schema}
                     handleAddChild={handleAddChild}
                     parentsId={child[0]}

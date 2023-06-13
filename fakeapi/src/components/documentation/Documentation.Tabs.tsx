@@ -2,9 +2,9 @@
 
 import { nodejs, python } from "@/helpers/documentation-code";
 import React, { FC } from "react";
-import Code from "./Code";
+import Code from "../Code";
 import SimpleBar from 'simplebar-react'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/Tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/Tabs";
 
 const DocumentationTabs: FC = () => {
   return (
