@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useState, Fragment, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
@@ -10,7 +10,7 @@ import { MdDataArray, MdDataObject } from "react-icons/md";
 import { BsCardImage } from "react-icons/bs";
 import { TbSortAscendingNumbers } from "react-icons/tb";
 import { AiOutlineFieldBinary, AiOutlineFile } from "react-icons/ai";
-import KeyValueComp from "./DisplayAddedData";
+import KeyValueComp from "./DisplayAddedData.page";
 import { buttonVariants } from "../ui/Button";
 import { SchemaData } from "@/types/generator";
 
@@ -26,13 +26,13 @@ const typeOfType = [
   {
     name: "Object",
     icon: <MdDataObject className="h-8 w-8" />,
-    subOptions: [{ Name: "Customised Object", Value: "Customised Object" }],
+    subOptions: [{ Name: "Customized Object", Value: "Customized Object" }],
   },
   {
     name: "Array",
     icon: <MdDataArray className="h-8 w-8" />,
     subOptions: [
-      { Name: "Customised Array", Value: "Customised Array" },
+      { Name: "Customized Array", Value: "Customized Array" },
       {
         Name: "Array of Random User Images",
         Value: "Array of Random User Images",
@@ -58,19 +58,19 @@ const typeOfType = [
     name: "Number",
     icon: <TbSortAscendingNumbers className="h-8 w-8" />,
     subOptions: [
-      { Name: "Random Number", Value: "Random Numberr" },
+      { Name: "Random Number", Value: "Random Number" },
       { Name: "Select a Number", Value: "Select a Number" },
     ],
   },
   {
     name: "Boolean",
     icon: <AiOutlineFieldBinary className="h-8 w-8" />,
-    subOptions: [{ Name: "Customised Object", Value: "Customised Object" }],
+    subOptions: [{ Name: "Customized Object", Value: "Customized Object" }],
   },
   {
     name: "File",
     icon: <AiOutlineFile className="h-8 w-8" />,
-    subOptions: [{ Name: "Customised Object", Value: "Customised Object" }],
+    subOptions: [{ Name: "Customized Object", Value: "Customized Object" }],
   },
 ];
 
@@ -79,7 +79,7 @@ const AddChildModal = ({
   setIsOpen,
   handleAddChild,
   parent,
-  parentsId
+  parentsId,
 }: {
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -105,27 +105,27 @@ const AddChildModal = ({
     options: [],
   });
 
-  const [errors, setErrors] = useState<string>('');
+  const [errors, setErrors] = useState<string>("");
 
   const handleAddData = () => {
-    if(keyValueData.key === '') {
-      if(parent.type === 'Array'){
+    if (keyValueData.key === "") {
+      if (parent.type === "Array") {
         const updated = keyValueData;
-        updated.key = (Object.entries(parent.children).length).toString()
-        setKeyValueData(updated)
+        updated.key = Object.entries(parent.children).length.toString();
+        setKeyValueData(updated);
       } else {
-        setErrors(`Add name for the ${keyValueData.type}`)
+        setErrors(`Add name for the ${keyValueData.type}`);
         return;
       }
     }
-    if(keyValueData.value === '') {
-      setErrors(`Add option for the ${keyValueData.type}`)
+    if (keyValueData.value === "") {
+      setErrors(`Add option for the ${keyValueData.type}`);
       return;
     }
 
-    setErrors('')
+    setErrors("");
 
-    console.log(keyValueData)
+    console.log(keyValueData);
 
     handleAddChild(keyValueData, parentsId);
 
@@ -220,22 +220,28 @@ const AddChildModal = ({
                       )}
                     </Disclosure>
 
-                    {(valueOptions.show) && <Input
-                      placeholder={`${
-                        keyValueData.type === "Object"
-                          ? "Key of the Object"
-                          : `Name of the ${keyValueData.type}`
-                      }`}
-                      onChange={(e) =>
-                        setKeyValueData({
-                          ...keyValueData,
-                          key: e.target.value,
-                        })
-                      }
-                      className="w-full"
-                      defaultValue={parent.type === 'Array' ? Object.entries(parent.children).length : ''}
-                      readOnly={parent.type === 'Array'}
-                    />}
+                    {valueOptions.show && (
+                      <Input
+                        placeholder={`${
+                          keyValueData.type === "Object"
+                            ? "Key of the Object"
+                            : `Name of the ${keyValueData.type}`
+                        }`}
+                        onChange={(e) =>
+                          setKeyValueData({
+                            ...keyValueData,
+                            key: e.target.value,
+                          })
+                        }
+                        className="w-full"
+                        defaultValue={
+                          parent.type === "Array"
+                            ? Object.entries(parent.children).length
+                            : ""
+                        }
+                        readOnly={parent.type === "Array"}
+                      />
+                    )}
 
                     {valueOptions.show && (
                       <Disclosure as="div" className="mt-1">

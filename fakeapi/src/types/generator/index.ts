@@ -1,7 +1,7 @@
 export interface SchemaData {
     key: string;
     value: string;
-    children: SchemaData;
+    children: any;
     counter: number;
     type: string;
     copies: Number;

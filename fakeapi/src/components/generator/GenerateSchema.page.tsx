@@ -3,13 +3,13 @@
 import React, { FC, useEffect, useState } from "react";
 import Paragraph from "../ui/Paragrapgh";
 import SliderUi from "../ui/SliderUi";
-import AddChildButton from "./AddChildButton";
+import AddChildButton from "./AddChild.Button";
 import { Input } from "../ui/Input";
-import { dummyData } from "./../../lib/dummyData";
+import { dummyData } from "../../lib/dummyData";
 import { BsCaretDownFill } from "react-icons/bs";
 import SwitchUi from "../ui/SwitchUi";
 import { ProjectInterface, SchemaData } from "@/types/generator";
-import DisplayAddedData from "./DisplayAddedData";
+import DisplayAddedData from "./DisplayAddedData.page";
 import ShortUniqueId from "short-unique-id";
 import { schemaToDataDecoder } from "../../lib/SchemaToDataDecoder";
 import { buttonVariants } from '@/components/ui/Button';

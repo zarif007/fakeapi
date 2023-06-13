@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { buttonVariants } from "../ui/Button";
 import { MdOutlineAdd } from "react-icons/md";
-import AddChildModal from "./AddChildModal";
+import AddChildModal from "./AddChild.Modal";
 import ColorHydration from "../ui/ColorHydration";
 import { SchemaData } from "@/types/generator";
 
@@ -19,7 +19,7 @@ const AddChildButton = ({
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   return (
-    <>
+    <React.Fragment>
       <ColorHydration />
 
       <button
@@ -37,7 +37,7 @@ const AddChildButton = ({
         parentsId={parentsId}
         parent={parent}
       />
-    </>
+    </React.Fragment>
   );
 };
 

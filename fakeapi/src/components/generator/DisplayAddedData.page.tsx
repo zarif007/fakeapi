@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Input } from "../ui/Input";
 import { colorArray } from "@/lib/ColorArray";
 import ColorHydration from "../ui/ColorHydration";
-import AddChildButton from "./AddChildButton";
+import AddChildButton from "./AddChild.Button";
 import { BsCaretDownFill } from "react-icons/bs";
 import { SchemaData } from "@/types/generator";
 
@@ -10,7 +10,7 @@ const DisplayAddedData = ({
   data,
   parent,
   handleAddChild,
-  parentsId
+  parentsId,
 }: {
   data: SchemaData;
   parent: SchemaData;
@@ -74,13 +74,13 @@ const DisplayAddedData = ({
       </div>
 
       {showChild ? (
-        <>
+        <React.Fragment>
           {Object.entries(data.children).length > 0 &&
             Object.entries(data.children).map((child, index) => {
               return (
                 <DisplayAddedData
                   key={index}
-                  data={child[1]}
+                  data={child[1] as SchemaData}
                   parent={data}
                   parentsId={child[0]}
                   handleAddChild={handleAddChild}
@@ -89,8 +89,8 @@ const DisplayAddedData = ({
             })}
 
           <div className="ml-12">
-            {data.value === "Customised Object" ||
-            data.value === "Customised Array" ? (
+            {data.value === "Customized Object" ||
+            data.value === "Customized Array" ? (
               <AddChildButton
                 color={colorArray[(data.counter + 1) % colorArray.length]}
                 handleAddChild={handleAddChild}
@@ -103,7 +103,7 @@ const DisplayAddedData = ({
               )
             )}
           </div>
-        </>
+        </React.Fragment>
       ) : (
         <div
           className={`text-white dark:text-slate-900 bg-[${

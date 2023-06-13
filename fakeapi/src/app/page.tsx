@@ -49,7 +49,6 @@ export default function Home() {
                   <span className='font-semibold'>Documentation 📝</span>
               </Link>
             </div>
-              
 
             {/* <div className='relative w-full max-w-xl lg:max-w-3xl h-1/2 lg:left-1/2 aspect-square lg:absolute'>
               <Image

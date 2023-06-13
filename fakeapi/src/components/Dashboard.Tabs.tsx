@@ -2,7 +2,7 @@
 
 import React, { FC } from 'react'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/Tabs";
-import ProjectCreation from './ProjectCreation';
+import ProjectCreation from './ProjectCreation.page';
 import ApiDashboard from './ApiDashboard';
 import { BsDatabaseAdd } from "react-icons/bs";
 import { IoStatsChartOutline } from "react-icons/io5";
