@@ -7,7 +7,6 @@ import SignOutButton from "./ui/SignOutButton";
 import SignInButton from "./ui/SignInButton";
 import { authOptions } from "@/lib/auth";
 import MenuToggle from "./ui/MenuToggle";
-import Paragraph from "./ui/Paragrapgh";
 import Image from "next/image";
 
 const Navbar = async () => {

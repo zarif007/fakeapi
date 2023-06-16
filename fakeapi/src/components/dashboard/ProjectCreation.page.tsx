@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { toast } from "../ui/Toast";
 import LargeHeading from "../ui/LargeHeading";
-import Paragraph from "../ui/Paragrapgh";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 import { AiOutlineApi } from "react-icons/ai";
@@ -29,7 +28,7 @@ const ProjectCreation = () => {
 
       const project: CreatedProject = data.data;
 
-      router.push(`/generator/${project.createdProject?.id}`);
+      router.push(`/generator/${project.project?.id}`);
 
       toast({
         title: "Success",
