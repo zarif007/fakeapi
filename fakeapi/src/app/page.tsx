@@ -25,7 +25,10 @@ export default function Home() {
           <div className="h-full gap-6 flex flex-col justify-center items-center">
             <LargeHeading size="lg" className="three-d text-center">
               Generate <br />
-              <span className="gradient1-text">APIs with fake data</span> <br />
+              <span className="gradient1-text">
+                APIs with AI && fake data
+              </span>{" "}
+              <br />
               for your projects
             </LargeHeading>
 

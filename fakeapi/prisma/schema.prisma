@@ -56,7 +56,7 @@ model User {
 model Project {
   id       String  @id @default(cuid())
   name     String
-  key      String  @unique
+  key      String
   enabled  Boolean @default(true)
   author   User    @relation(fields: [authorId], references: [id])
   authorId String
