@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import React from "react";
 import { formatDistance } from "date-fns";
 import LargeHeading from "../ui/LargeHeading";
-import Paragraph from "../ui/Paragrapgh";
+import Paragraph from "../ui/Paragraph";
 import { Input } from "../ui/Input";
 import Table from "../ui/Table";
 import ApiKeyOptions from "../ui/ApiKeyOptions";

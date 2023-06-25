@@ -1,6 +1,6 @@
 import { buttonVariants } from "@/components/ui/Button";
 import LargeHeading from "@/components/ui/LargeHeading";
-import Paragraph from "@/components/ui/Paragrapgh";
+import Paragraph from "@/components/ui/Paragraph";
 import { Inter } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,7 +26,7 @@ export default function Home() {
             <LargeHeading size="lg" className="three-d text-center">
               Generate <br />
               <span className="gradient1-text">
-                APIs with AI && fake data
+                APIs with AI & fake data
               </span>{" "}
               <br />
               for your projects

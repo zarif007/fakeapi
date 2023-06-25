@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FC, useEffect, useState } from "react";
-import Paragraph from "../ui/Paragrapgh";
+import Paragraph from "../ui/Paragraph";
 import SliderUi from "../ui/SliderUi";
 import AddChildButton from "./AddChild.Button";
 import { Input } from "../ui/Input";

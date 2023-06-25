@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import type { Metadata } from "next";
 import LargeHeading from "@/components/ui/LargeHeading";
-import Paragraph from "@/components/ui/Paragrapgh";
+import Paragraph from "@/components/ui/Paragraph";
 import DocumentationTabs from "@/components/documentation/Documentation.Tabs";
 import "simplebar-react/dist/simplebar.min.css";
 
