@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\Zarif\\Desktop\\projects\\fakeapi\\fakeapi\\logs\\winston\\errors\\.2804787e080e657e848aea14f4e046d32757fcd6-audit.json",
+    "files": [
+        {
+            "date": 1687728803395,
+            "name": "C:\\Users\\Zarif\\Desktop\\projects\\fakeapi\\fakeapi\\logs\\winston\\errors\\[2023-06-26-03]-error.log",
+            "hash": "51b0d6a65e0046a5f9e5d9fe4125593b36b5affd6d4cacfa1e8cdcc02073ca3f"
+        }
+    ],
+    "hashType": "sha256"
+}

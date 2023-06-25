@@ -7,6 +7,8 @@ const envConfig_1 = __importDefault(require("../config/envConfig"));
 const handleValidationError_1 = __importDefault(require("../errors/handleValidationError"));
 const ApiError_1 = __importDefault(require("../errors/ApiError"));
 const logger_1 = require("../shared/logger");
+const zod_1 = require("zod");
+const handleZodError_1 = __importDefault(require("../errors/handleZodError"));
 const envBasedLogger = (error) => {
     // eslint-disable-next-line
     envConfig_1.default.node_env === 'development'
@@ -47,6 +49,12 @@ const globalErrorHandler = (err, req, res, next) => {
                 },
             ]
             : [];
+    }
+    else if (err instanceof zod_1.ZodError) {
+        const error = (0, handleZodError_1.default)(err);
+        statusCode = error.statusCode;
+        message = error.message;
+        errorMessages = error.errorMessages;
     }
     res.status(statusCode).json({
         success: false,

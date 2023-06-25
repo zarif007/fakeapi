@@ -1,7 +1,7 @@
 {
-  "name": "create-ezntem-app",
+  "name": "fakeapi-monorepo",
   "version": "1.0.0",
-  "description": "Boilerplate of Node Typescript Express server with MongoDB database for REST API",
+  "description": "Generate APIs with AI & fake data",
   "main": "src/server.ts",
   "scripts": {
     "build": "npx tsc",

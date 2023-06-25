@@ -7,9 +7,8 @@ const handleValidationError = (err) => {
             message: el === null || el === void 0 ? void 0 : el.message,
         };
     });
-    const statusCode = 400;
     return {
-        statusCode,
+        statusCode: 400,
         message: 'Validation Error',
         errorMessages: errors,
     };
