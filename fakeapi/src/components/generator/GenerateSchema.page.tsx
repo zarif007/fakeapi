@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import React, { FC, useEffect, useState } from "react";
-import Paragraph from "../ui/Paragraph";
-import SliderUi from "../ui/SliderUi";
-import AddChildButton from "./AddChild.Button";
-import { Input } from "../ui/Input";
-import { dummyData } from "../../lib/dummyData";
-import { BsCaretDownFill } from "react-icons/bs";
-import SwitchUi from "../ui/SwitchUi";
-import { ProjectInterface, SchemaData } from "@/types/generator";
-import DisplayAddedData from "./DisplayAddedData.page";
-import ShortUniqueId from "short-unique-id";
-import { schemaToDataDecoder } from "../../lib/SchemaToDataDecoder";
-import { buttonVariants } from "@/components/ui/Button";
-import { db } from "@/lib/db";
-import axios from "axios";
-import { toast } from "../ui/Toast";
+import React, { FC, useEffect, useState } from 'react';
+import Paragraph from '../ui/Paragraph';
+import SliderUi from '../ui/SliderUi';
+import AddChildButton from './AddChild.Button';
+import { Input } from '../ui/Input';
+import { dummyData } from '../../lib/dummyData';
+import { BsCaretDownFill } from 'react-icons/bs';
+import SwitchUi from '../ui/SwitchUi';
+import { ProjectInterface, SchemaData } from '@/types/generator';
+import DisplayAddedData from './DisplayAddedData.page';
+import ShortUniqueId from 'short-unique-id';
+import { schemaToDataDecoder } from '../../lib/SchemaToDataDecoder';
+import { buttonVariants } from '@/components/ui/Button';
+import { db } from '@/lib/db';
+import axios from 'axios';
+import { toast } from '../ui/Toast';
 
 const GenerateSchema = ({ project }: { project: any }) => {
   const [objectSize, setObjectSize] = useState<number>(1);
@@ -47,7 +47,7 @@ const GenerateSchema = ({ project }: { project: any }) => {
     }
 
     Object.entries(updateAbleSchema.children).length > 0 &&
-      Object.entries(updateAbleSchema.children).map((NSchema) => {
+      Object.entries(updateAbleSchema.children).map(NSchema => {
         findParentAndUpdate(
           child,
           parentsId,
@@ -59,21 +59,21 @@ const GenerateSchema = ({ project }: { project: any }) => {
 
   const handleAddChild = (child: SchemaData, parentsId: string) => {
     const updateAbleSchema: SchemaData = schema;
-    findParentAndUpdate(child, parentsId, updateAbleSchema, "");
+    findParentAndUpdate(child, parentsId, updateAbleSchema, '');
     setSchema(updateAbleSchema);
   };
 
   const handleSubmit = async () => {
     const data: any = {};
     Object.entries(schema.children).length > 0 &&
-      Object.entries(schema.children).map((child) => {
+      Object.entries(schema.children).map(child => {
         Object.assign(data, schemaToDataDecoder(child[1]));
       });
     console.log(data);
     setDecodedData(data);
 
     try {
-      const d = await axios.patch("/api/project/update", {
+      const d = await axios.patch('/api/project/update', {
         id: project.id,
         schema,
       });
@@ -81,25 +81,25 @@ const GenerateSchema = ({ project }: { project: any }) => {
       console.log(d);
 
       toast({
-        title: "Success",
-        message: "Project updated successfully",
-        type: "success",
+        title: 'Success',
+        message: 'Project updated successfully',
+        type: 'success',
       });
     } catch (err) {
       if (err instanceof Error) {
         toast({
-          title: "Error",
+          title: 'Error',
           message: err.message,
-          type: "error",
+          type: 'error',
         });
 
         return;
       }
 
       toast({
-        title: "Error",
-        message: "Something went wrong",
-        type: "error",
+        title: 'Error',
+        message: 'Something went wrong',
+        type: 'error',
       });
     }
   };
@@ -113,7 +113,7 @@ const GenerateSchema = ({ project }: { project: any }) => {
           <SliderUi value={objectSize} setValue={setObjectSize} />
         </div>
 
-        {/* Swtich for hover border */}
+        {/* Switch for hover border */}
         <div>
           <Paragraph>Hover border</Paragraph>
           <SwitchUi />
@@ -127,7 +127,7 @@ const GenerateSchema = ({ project }: { project: any }) => {
           <div className="px-2 rounded bg-slate-900 dark:bg-slate-50 w-fit flex items-center justify-center space-x-2">
             <BsCaretDownFill
               className={`w-8 h-8 text-slate-100 dark:text-slate-900 ${
-                !showChild && "-rotate-90"
+                !showChild && '-rotate-90'
               } cursor-pointer`}
               onClick={() => setShowChild(!showChild)}
             />
@@ -141,8 +141,8 @@ const GenerateSchema = ({ project }: { project: any }) => {
             </div>
           </div>
           <div className="text-5xl flex">
-            <p>{objectSize > 1 && "["}</p>
-            <p>{"{"}</p>
+            <p>{objectSize > 1 && '['}</p>
+            <p>{'{'}</p>
           </div>
         </div>
 
@@ -184,15 +184,15 @@ const GenerateSchema = ({ project }: { project: any }) => {
 
         <div className="text-slate-900 dark:text-slate-50">
           <h1 className="text-5xl font-bold">
-            {"}"}
-            {objectSize > 1 && ", ]"}
+            {'}'}
+            {objectSize > 1 && ', ]'}
           </h1>
         </div>
 
         <div className="flex justify-end">
           <button
             onClick={handleSubmit}
-            className={`${buttonVariants({ variant: "default" })}`}
+            className={`${buttonVariants({ variant: 'default' })}`}
           >
             Done
           </button>

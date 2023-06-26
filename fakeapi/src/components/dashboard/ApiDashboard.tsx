@@ -1,22 +1,22 @@
-import { authOptions } from "@/lib/auth";
-import { db } from "@/lib/db";
-import { getServerSession } from "next-auth";
-import { notFound } from "next/navigation";
-import React from "react";
-import { formatDistance } from "date-fns";
-import LargeHeading from "../ui/LargeHeading";
-import Paragraph from "../ui/Paragraph";
-import { Input } from "../ui/Input";
-import Table from "../ui/Table";
-import ApiKeyOptions from "../ui/ApiKeyOptions";
-import { useRouter } from "next/navigation";
+import { authOptions } from '@/lib/auth';
+import { db } from '@/lib/db';
+import { getServerSession } from 'next-auth';
+import { notFound } from 'next/navigation';
+import React from 'react';
+import { formatDistance } from 'date-fns';
+import LargeHeading from '../ui/LargeHeading';
+import Paragraph from '../ui/Paragraph';
+import { Input } from '../ui/Input';
+import Table from '../ui/Table';
+import ApiKeyOptions from '../ui/ApiKeyOptions';
+import { useRouter } from 'next/navigation';
 
 const ApiDashboard = async () => {
   const router = useRouter();
 
   const user = await getServerSession(authOptions);
 
-  if (!user) router.push("/");
+  if (!user) router.push('/');
 
   const apiKeys = await db.apiKey.findMany({
     where: { userId: user?.user.id },
@@ -29,12 +29,12 @@ const ApiDashboard = async () => {
   const userRequests = await db.apiRequest.findMany({
     where: {
       apiKeyId: {
-        in: apiKeys.map((key) => key.id),
+        in: apiKeys.map(key => key.id),
       },
     },
   });
 
-  const serializableRequests = userRequests.map((req) => ({
+  const serializableRequests = userRequests.map(req => ({
     ...req,
     timestamp: formatDistance(new Date(req.timestamp), new Date()),
   }));
@@ -46,7 +46,7 @@ const ApiDashboard = async () => {
       </LargeHeading>
       <div className="flex flex-col md:flex-row gap-4  items-center">
         <Paragraph>Your API key:</Paragraph>
-        {activeApiKeys.map((apiKey) => {
+        {activeApiKeys.map(apiKey => {
           return (
             <div key={apiKey.key}>
               <Input className="w-fit truncate" readOnly value={apiKey.key} />

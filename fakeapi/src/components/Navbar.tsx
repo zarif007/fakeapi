@@ -1,13 +1,13 @@
 // import { authOptions } from '@/lib/auth'
-import { getServerSession } from "next-auth";
-import Link from "next/link";
-import { buttonVariants } from "./ui/Button";
-import { ThemeToggle } from "./ui/ThemeToggle";
-import SignOutButton from "./ui/SignOutButton";
-import SignInButton from "./ui/SignInButton";
-import { authOptions } from "@/lib/auth";
-import MenuToggle from "./ui/MenuToggle";
-import Image from "next/image";
+import { getServerSession } from 'next-auth';
+import Link from 'next/link';
+import { buttonVariants } from './ui/Button';
+import { ThemeToggle } from './ui/ThemeToggle';
+import SignOutButton from './ui/SignOutButton';
+import SignInButton from './ui/SignInButton';
+import { authOptions } from '@/lib/auth';
+import MenuToggle from './ui/MenuToggle';
+import Image from 'next/image';
 
 const Navbar = async () => {
   const session = await getServerSession(authOptions);
@@ -32,22 +32,22 @@ const Navbar = async () => {
 
           <Link
             href="/documentation"
-            className={buttonVariants({ variant: "ghost" })}
+            className={buttonVariants({ variant: 'ghost' })}
           >
             Documentation
           </Link>
           {session ? (
             <>
               <Link
-                className={buttonVariants({ variant: "ghost" })}
+                className={buttonVariants({ variant: 'ghost' })}
                 href="/dashboard"
               >
                 Dashboard
               </Link>
               <img
-                src={session.user.image || ""}
+                src={session.user.image || ''}
                 className="h-10 rounded-full"
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: 'contain' }}
                 alt="dragon"
               />
               <SignOutButton />

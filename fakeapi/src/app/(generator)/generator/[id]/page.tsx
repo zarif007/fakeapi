@@ -1,10 +1,10 @@
-import GeneratorTabs from "@/components/generator/Generator.Tabs";
-import GnTopbar from "@/components/generator/GnTopbar";
-import { db } from "@/lib/db";
-import Link from "next/link";
-import { notFound } from "next/navigation";
-import React, { FC } from "react";
-import { AiOutlineArrowLeft } from "react-icons/ai";
+import GeneratorTabs from '@/components/generator/Generator.Tabs';
+import GnTopbar from '@/components/generator/GnTopbar';
+import { db } from '@/lib/db';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import React, { FC } from 'react';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 interface PageParams {
   params: {

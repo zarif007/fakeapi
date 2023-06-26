@@ -1,14 +1,14 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 
-import type { Metadata } from "next";
-import LargeHeading from "@/components/ui/LargeHeading";
-import Paragraph from "@/components/ui/Paragraph";
-import DocumentationTabs from "@/components/documentation/Documentation.Tabs";
-import "simplebar-react/dist/simplebar.min.css";
+import type { Metadata } from 'next';
+import LargeHeading from '@/components/ui/LargeHeading';
+import Paragraph from '@/components/ui/Paragraph';
+import DocumentationTabs from '@/components/documentation/Documentation.Tabs';
+import 'simplebar-react/dist/simplebar.min.css';
 
 export const metadata: Metadata = {
-  title: "Fake API || Documentation",
-  description: "App for generating APIs with Fake data",
+  title: 'Fake API || Documentation',
+  description: 'App for generating APIs with Fake data',
 };
 
 const page: FC = () => {

@@ -1,20 +1,20 @@
-import { authOptions } from "@/lib/auth";
-import { NextApiRequest, NextApiResponse } from "next";
-import { getServerSession } from "next-auth";
-import { z } from "zod";
-import { withMethods } from "@/lib/api-middlewares/with-methods";
-import { db } from "@/lib/db";
-import { nanoid } from "nanoid";
+import { authOptions } from '@/lib/auth';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { getServerSession } from 'next-auth';
+import { z } from 'zod';
+import { withMethods } from '@/lib/api-middlewares/with-methods';
+import { db } from '@/lib/db';
+import { nanoid } from 'nanoid';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const user = await getServerSession(req, res, authOptions).then(
-      (res) => res?.user
+      res => res?.user
     );
 
     if (!user) {
       return res.status(401).json({
-        error: "SignIn to perform this action",
+        error: 'SignIn to perform this action',
         project: null,
       });
     }
@@ -25,9 +25,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         name: req.body.name,
         authorId: user.id,
         schema: {
-          key: "data",
-          value: "Object",
-          type: "Object",
+          key: 'data',
+          value: 'Object',
+          type: 'Object',
           children: {},
           counter: -1,
           copies: 1,
@@ -44,8 +44,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     return res
       .status(500)
-      .json({ error: "Internal Server Error", project: null });
+      .json({ error: 'Internal Server Error', project: null });
   }
 };
 
-export default withMethods(["POST"], handler);
+export default withMethods(['POST'], handler);

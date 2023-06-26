@@ -1,76 +1,76 @@
-"use client";
+'use client';
 
-import React, { useState, Fragment, useEffect } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import { Disclosure } from "@headlessui/react";
-import { Input } from "../ui/Input";
-import { ChevronUpIcon } from "@heroicons/react/20/solid";
-import { VscSymbolString } from "react-icons/vsc";
-import { MdDataArray, MdDataObject } from "react-icons/md";
-import { BsCardImage } from "react-icons/bs";
-import { TbSortAscendingNumbers } from "react-icons/tb";
-import { AiOutlineFieldBinary, AiOutlineFile } from "react-icons/ai";
-import KeyValueComp from "./DisplayAddedData.page";
-import { buttonVariants } from "../ui/Button";
-import { SchemaData } from "@/types/generator";
+import React, { useState, Fragment, useEffect } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+import { Disclosure } from '@headlessui/react';
+import { Input } from '../ui/Input';
+import { ChevronUpIcon } from '@heroicons/react/20/solid';
+import { VscSymbolString } from 'react-icons/vsc';
+import { MdDataArray, MdDataObject } from 'react-icons/md';
+import { BsCardImage } from 'react-icons/bs';
+import { TbSortAscendingNumbers } from 'react-icons/tb';
+import { AiOutlineFieldBinary, AiOutlineFile } from 'react-icons/ai';
+import KeyValueComp from './DisplayAddedData.page';
+import { buttonVariants } from '../ui/Button';
+import { SchemaData } from '@/types/generator';
 
 const typeOfType = [
   {
-    name: "String",
+    name: 'String',
     icon: <VscSymbolString className="h-8 w-8" />,
     subOptions: [
-      { Name: "Random User Name", Value: "Random User Name" },
-      { Name: "Random Text", Value: "Random Text" },
+      { Name: 'Random User Name', Value: 'Random User Name' },
+      { Name: 'Random Text', Value: 'Random Text' },
     ],
   },
   {
-    name: "Object",
+    name: 'Object',
     icon: <MdDataObject className="h-8 w-8" />,
-    subOptions: [{ Name: "Customized Object", Value: "Customized Object" }],
+    subOptions: [{ Name: 'Customized Object', Value: 'Customized Object' }],
   },
   {
-    name: "Array",
+    name: 'Array',
     icon: <MdDataArray className="h-8 w-8" />,
     subOptions: [
-      { Name: "Customized Array", Value: "Customized Array" },
+      { Name: 'Customized Array', Value: 'Customized Array' },
       {
-        Name: "Array of Random User Images",
-        Value: "Array of Random User Images",
+        Name: 'Array of Random User Images',
+        Value: 'Array of Random User Images',
       },
-      { Name: "Array of Random Images", Value: "Array of Random Images" },
+      { Name: 'Array of Random Images', Value: 'Array of Random Images' },
       {
-        Name: "Array of Random User Names",
-        Value: "Array of Random User Names",
+        Name: 'Array of Random User Names',
+        Value: 'Array of Random User Names',
       },
-      { Name: "Array of Random Texts", Value: "Array of Random Texts" },
-      { Name: "Array of Random Numbers", Value: "Array of Random Numbers" },
+      { Name: 'Array of Random Texts', Value: 'Array of Random Texts' },
+      { Name: 'Array of Random Numbers', Value: 'Array of Random Numbers' },
     ],
   },
   {
-    name: "Image",
+    name: 'Image',
     icon: <BsCardImage className="h-8 w-8" />,
     subOptions: [
-      { Name: "Random Image", Value: "Random Image" },
-      { Name: "Random UserImage", Value: "Random UserImage" },
+      { Name: 'Random Image', Value: 'Random Image' },
+      { Name: 'Random UserImage', Value: 'Random UserImage' },
     ],
   },
   {
-    name: "Number",
+    name: 'Number',
     icon: <TbSortAscendingNumbers className="h-8 w-8" />,
     subOptions: [
-      { Name: "Random Number", Value: "Random Number" },
-      { Name: "Select a Number", Value: "Select a Number" },
+      { Name: 'Random Number', Value: 'Random Number' },
+      { Name: 'Select a Number', Value: 'Select a Number' },
     ],
   },
   {
-    name: "Boolean",
+    name: 'Boolean',
     icon: <AiOutlineFieldBinary className="h-8 w-8" />,
-    subOptions: [{ Name: "Customized Object", Value: "Customized Object" }],
+    subOptions: [{ Name: 'Customized Object', Value: 'Customized Object' }],
   },
   {
-    name: "File",
+    name: 'File',
     icon: <AiOutlineFile className="h-8 w-8" />,
-    subOptions: [{ Name: "Customized Object", Value: "Customized Object" }],
+    subOptions: [{ Name: 'Customized Object', Value: 'Customized Object' }],
   },
 ];
 
@@ -88,9 +88,9 @@ const AddChildModal = ({
   parentsId: string;
 }) => {
   const [keyValueData, setKeyValueData] = useState({
-    key: "",
-    value: "",
-    type: "",
+    key: '',
+    value: '',
+    type: '',
     children: {},
     counter: 0,
     copies: 1,
@@ -105,11 +105,11 @@ const AddChildModal = ({
     options: [],
   });
 
-  const [errors, setErrors] = useState<string>("");
+  const [errors, setErrors] = useState<string>('');
 
   const handleAddData = () => {
-    if (keyValueData.key === "") {
-      if (parent.type === "Array") {
+    if (keyValueData.key === '') {
+      if (parent.type === 'Array') {
         const updated = keyValueData;
         updated.key = Object.entries(parent.children).length.toString();
         setKeyValueData(updated);
@@ -118,12 +118,12 @@ const AddChildModal = ({
         return;
       }
     }
-    if (keyValueData.value === "") {
+    if (keyValueData.value === '') {
       setErrors(`Add option for the ${keyValueData.type}`);
       return;
     }
 
-    setErrors("");
+    setErrors('');
 
     console.log(keyValueData);
 
@@ -131,9 +131,9 @@ const AddChildModal = ({
 
     setIsOpen(false);
     setKeyValueData({
-      key: "",
-      value: "",
-      type: "",
+      key: '',
+      value: '',
+      type: '',
       children: {},
       counter: 0,
       copies: 1,
@@ -143,14 +143,14 @@ const AddChildModal = ({
   };
 
   useEffect(() => {
-    if (keyValueData.type !== "") {
-      typeOfType.map((type) => {
+    if (keyValueData.type !== '') {
+      typeOfType.map(type => {
         if (type.name === keyValueData.type) {
           setValueOptions({ options: type.subOptions, show: true });
         }
       });
 
-      setKeyValueData({ ...keyValueData, value: "" });
+      setKeyValueData({ ...keyValueData, value: '' });
     }
   }, [keyValueData.type]);
 
@@ -194,12 +194,12 @@ const AddChildModal = ({
                             <span>Select Data Type</span>
                             <ChevronUpIcon
                               className={`${
-                                open ? "rotate-180 transform" : ""
+                                open ? 'rotate-180 transform' : ''
                               } h-5 w-5 text-blue-500`}
                             />
                           </Disclosure.Button>
                           <div className="flex flex-wrap ml-4">
-                            {typeOfType.map((type) => {
+                            {typeOfType.map(type => {
                               return (
                                 <Disclosure.Panel
                                   key={type.name}
@@ -223,11 +223,11 @@ const AddChildModal = ({
                     {valueOptions.show && (
                       <Input
                         placeholder={`${
-                          keyValueData.type === "Object"
-                            ? "Key of the Object"
+                          keyValueData.type === 'Object'
+                            ? 'Key of the Object'
                             : `Name of the ${keyValueData.type}`
                         }`}
-                        onChange={(e) =>
+                        onChange={e =>
                           setKeyValueData({
                             ...keyValueData,
                             key: e.target.value,
@@ -235,11 +235,11 @@ const AddChildModal = ({
                         }
                         className="w-full"
                         defaultValue={
-                          parent.type === "Array"
+                          parent.type === 'Array'
                             ? Object.entries(parent.children).length
-                            : ""
+                            : ''
                         }
-                        readOnly={parent.type === "Array"}
+                        readOnly={parent.type === 'Array'}
                       />
                     )}
 
@@ -253,7 +253,7 @@ const AddChildModal = ({
                               </span>
                               <ChevronUpIcon
                                 className={`${
-                                  open ? "rotate-180 transform" : ""
+                                  open ? 'rotate-180 transform' : ''
                                 } h-5 w-5 text-blue-500`}
                               />
                             </Disclosure.Button>
@@ -285,7 +285,7 @@ const AddChildModal = ({
                 <div className="flex justify-end">
                   <button
                     onClick={handleAddData}
-                    className={`${buttonVariants({ variant: "default" })}`}
+                    className={`${buttonVariants({ variant: 'default' })}`}
                   >
                     Done
                   </button>

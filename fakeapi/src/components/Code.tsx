@@ -1,11 +1,11 @@
-"use client";
+'use client';
 
-import React, { FC, useEffect, useState } from "react";
-import Highlight, { defaultProps, type Language } from "prism-react-renderer";
-import { useTheme } from "next-themes";
+import React, { FC, useEffect, useState } from 'react';
+import Highlight, { defaultProps, type Language } from 'prism-react-renderer';
+import { useTheme } from 'next-themes';
 
-import darkTheme from "prism-react-renderer/themes/nightOwl";
-import lightTheme from "prism-react-renderer/themes/nightOwlLight";
+import darkTheme from 'prism-react-renderer/themes/nightOwl';
+import lightTheme from 'prism-react-renderer/themes/nightOwlLight';
 
 interface CodeProps {
   code: string;
@@ -24,7 +24,7 @@ const Code: FC<CodeProps> = ({
 }) => {
   const { theme: applicationTheme } = useTheme();
 
-  const [text, setText] = useState(animated ? "" : code);
+  const [text, setText] = useState(animated ? '' : code);
 
   useEffect(() => {
     if (show && animated) {
@@ -44,7 +44,7 @@ const Code: FC<CodeProps> = ({
   // number of lines
   const lines = text.split(/\r\n|\r|\n/).length;
 
-  const theme = applicationTheme === "light" ? lightTheme : darkTheme;
+  const theme = applicationTheme === 'light' ? lightTheme : darkTheme;
 
   return (
     <Highlight {...defaultProps} code={text} language={language} theme={theme}>
@@ -52,7 +52,7 @@ const Code: FC<CodeProps> = ({
         <pre
           className={
             className +
-            "transition-all w-fit bg-transparent duration-100 py-0 no-scrollbar"
+            'transition-all w-fit bg-transparent duration-100 py-0 no-scrollbar'
           }
           style={{
             maxHeight: show ? lines * 24 : 0,
@@ -63,7 +63,7 @@ const Code: FC<CodeProps> = ({
             // eslint-disable-next-line no-unused-vars
             const { key, ...rest } = getLineProps({ line, key: i });
             return (
-              <div key={`line-${i}`} style={{ position: "relative" }} {...rest}>
+              <div key={`line-${i}`} style={{ position: 'relative' }} {...rest}>
                 {line.map((token, index) => {
                   // eslint-disable-next-line no-unused-vars
                   const { key, ...props } = getTokenProps({ token, i });

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { buttonVariants } from "../ui/Button";
-import { MdOutlineAdd } from "react-icons/md";
-import AddChildModal from "./AddChild.Modal";
-import ColorHydration from "../ui/ColorHydration";
-import { SchemaData } from "@/types/generator";
+import React, { useState } from 'react';
+import { buttonVariants } from '../ui/Button';
+import { MdOutlineAdd } from 'react-icons/md';
+import AddChildModal from './AddChild.Modal';
+import ColorHydration from '../ui/ColorHydration';
+import { SchemaData } from '@/types/generator';
 
 const AddChildButton = ({
   color,

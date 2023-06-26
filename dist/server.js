@@ -20,7 +20,7 @@ let server;
 const main = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield mongoose_1.default.connect(envConfig_1.default.database_url);
-        logger_1.infoLogger.info(`🤩 Database is connected`);
+        logger_1.infoLogger.info(`🤩Fake Api Database is connected`);
         server = app_1.default.listen(envConfig_1.default.PORT, () => {
             logger_1.infoLogger.info(`App is listening on PORT ${envConfig_1.default.PORT} & Process ID ${process.pid}`);
         });

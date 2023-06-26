@@ -16,7 +16,7 @@ export const nodejs = `1  const axios = require("axios");
 16    console.log(response.data);
 17  }).catch(function (error) {
 18    console.error(error);
-19  });`
+19  });`;
 
 export const python = `import requests
 
@@ -40,4 +40,4 @@ if response.status_code == 200:
     data = response.json()
     print(data)
 else:
-    print(f'Request failed with status code {response.status_code}')`
+    print(f'Request failed with status code {response.status_code}')`;

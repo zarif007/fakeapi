@@ -1,11 +1,11 @@
-import Navbar from "@/components/Navbar";
-import { cn } from "@/lib/utils";
-import Providers from "@/Providers";
-import "@/styles/globals.css";
-import { Inter } from "next/font/google";
-import { Toaster } from "./../components/ui/Toast";
+import Navbar from '@/components/Navbar';
+import { cn } from '@/lib/utils';
+import Providers from '@/Providers';
+import '@/styles/globals.css';
+import { Inter } from 'next/font/google';
+import { Toaster } from './../components/ui/Toast';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("bg-white text-slate-900 antialiased", inter.style)}
+      className={cn('bg-white text-slate-900 antialiased', inter.style)}
     >
       <body className="min-h-screen bg-slate-50 dark:bg-slate-900 antialiased">
         <Providers>

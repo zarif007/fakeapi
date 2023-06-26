@@ -1,19 +1,19 @@
-import { authOptions } from "@/lib/auth";
-import { NextApiRequest, NextApiResponse } from "next";
-import { getServerSession } from "next-auth";
-import { z } from "zod";
-import { withMethods } from "@/lib/api-middlewares/with-methods";
-import { db } from "@/lib/db";
+import { authOptions } from '@/lib/auth';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { getServerSession } from 'next-auth';
+import { z } from 'zod';
+import { withMethods } from '@/lib/api-middlewares/with-methods';
+import { db } from '@/lib/db';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const user = await getServerSession(req, res, authOptions).then(
-      (res) => res?.user
+      res => res?.user
     );
 
     if (!user) {
       return res.status(401).json({
-        error: "SignIn to perform this action",
+        error: 'SignIn to perform this action',
         project: null,
       });
     }
@@ -33,8 +33,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     return res
       .status(500)
-      .json({ error: "Internal Server Error", project: null });
+      .json({ error: 'Internal Server Error', project: null });
   }
 };
 
-export default withMethods(["PATCH"], handler);
+export default withMethods(['PATCH'], handler);

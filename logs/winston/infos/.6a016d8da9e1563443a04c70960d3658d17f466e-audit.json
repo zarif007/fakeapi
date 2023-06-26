@@ -6,9 +6,19 @@
     "auditLog": "C:\\Users\\Zarif\\Desktop\\projects\\fakeapi\\fakeapi\\logs\\winston\\infos\\.6a016d8da9e1563443a04c70960d3658d17f466e-audit.json",
     "files": [
         {
-            "date": 1687728803385,
-            "name": "C:\\Users\\Zarif\\Desktop\\projects\\fakeapi\\fakeapi\\logs\\winston\\infos\\[2023-06-26-03]-info.log",
-            "hash": "ce095c040ee62921659219e1c1c5bffb4c9acfb40a4cddc565a2dbd3236f7ee1"
+            "date": 1687778387201,
+            "name": "C:\\Users\\Zarif\\Desktop\\projects\\fakeapi\\fakeapi\\logs\\winston\\infos\\[2023-06-26-17]-info.log",
+            "hash": "8729fea26368ac94ec04153494b458b437cee851fd6646aac4957ee7a8243534"
+        },
+        {
+            "date": 1687784081366,
+            "name": "C:\\Users\\Zarif\\Desktop\\projects\\fakeapi\\fakeapi\\logs\\winston\\infos\\[2023-06-26-18]-info.log",
+            "hash": "58ac64d2f68ef0dc12331e0f05bcf988cf8e6288da41e5a00b5f74b407788419"
+        },
+        {
+            "date": 1687784489183,
+            "name": "C:\\Users\\Zarif\\Desktop\\projects\\fakeapi\\fakeapi\\logs\\winston\\infos\\[2023-06-26-19]-info.log",
+            "hash": "d8e713de4e80a378240159ba01a53956552184556f806766d88deff53f7a4ecc"
         }
     ],
     "hashType": "sha256"

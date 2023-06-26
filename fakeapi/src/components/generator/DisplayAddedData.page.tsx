@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Input } from "../ui/Input";
-import { colorArray } from "@/lib/ColorArray";
-import ColorHydration from "../ui/ColorHydration";
-import AddChildButton from "./AddChild.Button";
-import { BsCaretDownFill } from "react-icons/bs";
-import { SchemaData } from "@/types/generator";
+import React, { useState } from 'react';
+import { Input } from '../ui/Input';
+import { colorArray } from '@/lib/ColorArray';
+import ColorHydration from '../ui/ColorHydration';
+import AddChildButton from './AddChild.Button';
+import { BsCaretDownFill } from 'react-icons/bs';
+import { SchemaData } from '@/types/generator';
 
 const DisplayAddedData = ({
   data,
@@ -24,7 +24,7 @@ const DisplayAddedData = ({
       className={`ml-12 border-2 ${
         showBg
           ? `border-[${colorArray[data.counter % colorArray.length]}]`
-          : "border-slate-100 dark:border-slate-900"
+          : 'border-slate-100 dark:border-slate-900'
       } rounded pb-2 w-fit`}
     >
       <ColorHydration />
@@ -38,10 +38,10 @@ const DisplayAddedData = ({
             colorArray[data.counter % colorArray.length]
           }] items-center justify-center`}
         >
-          {(data.type === "Object" || data.type === "Array") && (
+          {(data.type === 'Object' || data.type === 'Array') && (
             <BsCaretDownFill
               className={`w-8 h-8 text-slate-100 dark:text-slate-900 ${
-                !showChild && "-rotate-90"
+                !showChild && '-rotate-90'
               } cursor-pointer`}
               onClick={() => setShowChild(!showChild)}
             />
@@ -55,7 +55,7 @@ const DisplayAddedData = ({
           <div className="text-4xl mb-2 font-bold dark:text-slate-900 text-slate-100">
             :
           </div>
-          {data.type !== "Object" && data.type !== "Array" && (
+          {data.type !== 'Object' && data.type !== 'Array' && (
             <Input
               defaultValue={data.value}
               className="dark:bg-slate-900 bg-slate-100 font-bold text-md"
@@ -69,7 +69,7 @@ const DisplayAddedData = ({
             colorArray[data.counter % colorArray.length]
           }] mb-1`}
         >
-          {data.type === "Object" ? "{" : data.type === "Array" ? "[" : ","}
+          {data.type === 'Object' ? '{' : data.type === 'Array' ? '[' : ','}
         </h1>
       </div>
 
@@ -89,8 +89,8 @@ const DisplayAddedData = ({
             })}
 
           <div className="ml-12">
-            {data.value === "Customized Object" ||
-            data.value === "Customized Array" ? (
+            {data.value === 'Customized Object' ||
+            data.value === 'Customized Array' ? (
               <AddChildButton
                 color={colorArray[(data.counter + 1) % colorArray.length]}
                 handleAddChild={handleAddChild}
@@ -98,7 +98,7 @@ const DisplayAddedData = ({
                 parentsId={parentsId}
               />
             ) : (
-              (data.type === "Object" || data.type === "Array") && (
+              (data.type === 'Object' || data.type === 'Array') && (
                 <DisplayValue data={data} />
               )
             )}
@@ -120,7 +120,7 @@ const DisplayAddedData = ({
           colorArray[data.counter % colorArray.length]
         }] mb-2`}
       >
-        {data.type === "Object" ? "}," : data.type === "Array" ? "]," : ""}
+        {data.type === 'Object' ? '},' : data.type === 'Array' ? '],' : ''}
       </h1>
     </div>
   );

@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import React, { FC } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/Tabs";
-import ProjectCreation from "./ProjectCreation.page";
-import ApiDashboard from "./ApiDashboard";
-import { BsDatabaseAdd } from "react-icons/bs";
-import { IoStatsChartOutline } from "react-icons/io5";
-import { VscFileBinary } from "react-icons/vsc";
+import React, { FC } from 'react';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/Tabs';
+import ProjectCreation from './ProjectCreation.page';
+import ApiDashboard from './ApiDashboard';
+import { BsDatabaseAdd } from 'react-icons/bs';
+import { IoStatsChartOutline } from 'react-icons/io5';
+import { VscFileBinary } from 'react-icons/vsc';
 
 const DashboardTabs: FC = () => {
   return (

@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import { Switch } from '@headlessui/react'
-
+import React, { useState } from 'react';
+import { Switch } from '@headlessui/react';
 
 const SwitchUi = () => {
-  const [enabled, setEnabled] = useState(false)
+  const [enabled, setEnabled] = useState(false);
   return (
     <div className="">
       <Switch
@@ -20,7 +19,7 @@ const SwitchUi = () => {
         />
       </Switch>
     </div>
-  )
-}
+  );
+};
 
-export default SwitchUi
+export default SwitchUi;

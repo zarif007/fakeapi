@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { toast } from "../ui/Toast";
-import LargeHeading from "../ui/LargeHeading";
-import { Button } from "../ui/Button";
-import { Input } from "../ui/Input";
-import { AiOutlineApi } from "react-icons/ai";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import { CreateApiData } from "@/types/api/key";
-import { CreatedProject } from "@/types/project";
+import React, { useState } from 'react';
+import { toast } from '../ui/Toast';
+import LargeHeading from '../ui/LargeHeading';
+import { Button } from '../ui/Button';
+import { Input } from '../ui/Input';
+import { AiOutlineApi } from 'react-icons/ai';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
+import { CreateApiData } from '@/types/api/key';
+import { CreatedProject } from '@/types/project';
 
 const ProjectCreation = () => {
   const router = useRouter();
@@ -22,7 +22,7 @@ const ProjectCreation = () => {
     e.preventDefault();
     setIsCreating(true);
     try {
-      const data = await axios.post("/api/project/create", {
+      const data = await axios.post('/api/project/create', {
         name: projectName,
       });
 
@@ -31,25 +31,25 @@ const ProjectCreation = () => {
       router.push(`/generator/${project.project?.id}`);
 
       toast({
-        title: "Success",
-        message: "Project Created successfully",
-        type: "success",
+        title: 'Success',
+        message: 'Project Created successfully',
+        type: 'success',
       });
     } catch (err) {
       if (err instanceof Error) {
         toast({
-          title: "Error",
+          title: 'Error',
           message: err.message,
-          type: "error",
+          type: 'error',
         });
 
         return;
       }
 
       toast({
-        title: "Error",
-        message: "Something went wrong",
-        type: "error",
+        title: 'Error',
+        message: 'Something went wrong',
+        type: 'error',
       });
     } finally {
       setIsCreating(false);
@@ -77,9 +77,9 @@ const ProjectCreation = () => {
           <Input
             required
             className="font-semibold w-full"
-            defaultValue={projectName ?? ""}
+            defaultValue={projectName ?? ''}
             placeholder="Porject Name"
-            onChange={(e) => setProjectName(e.target.value)}
+            onChange={e => setProjectName(e.target.value)}
           />
         </div>
         <div className="mt-6 flex justify-center sm:mt-0 sm:ml-4 sm:flex-shrink-0">
