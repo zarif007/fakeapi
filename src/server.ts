@@ -8,7 +8,7 @@ let server: Server;
 const main = async () => {
   try {
     await mongoose.connect(envConfig.database_url as string);
-    infoLogger.info(`🤩 Database is connected`);
+    infoLogger.info(`🤩Fake Api Database is connected`);
 
     server = app.listen(envConfig.PORT, () => {
       infoLogger.info(
