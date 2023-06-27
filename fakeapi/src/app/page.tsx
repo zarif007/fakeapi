@@ -2,7 +2,6 @@ import { buttonVariants } from '@/components/ui/Button';
 import LargeHeading from '@/components/ui/LargeHeading';
 import Paragraph from '@/components/ui/Paragraph';
 import { Inter } from 'next/font/google';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import type { Metadata } from 'next';
