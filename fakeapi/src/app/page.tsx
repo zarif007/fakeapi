@@ -12,8 +12,6 @@ export const metadata: Metadata = {
   description: 'App for generating APIs with Fake data',
 };
 
-const inter = Inter({ subsets: ['latin'] });
-
 export default function Home() {
   return (
     <div>
