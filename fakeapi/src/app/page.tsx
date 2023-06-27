@@ -23,7 +23,7 @@ export default function Home() {
             <LargeHeading size="lg" className="three-d text-center">
               Generate <br />
               <span className="gradient1-text">
-                APIs with AI & fake data
+                APIs with AI & Fake data
               </span>{' '}
               <br />
               for your projects
