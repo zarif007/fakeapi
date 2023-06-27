@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "G:\\0001_Project\\project\\fake api\\logs\\winston\\infos\\.d79272f3644c87baa323baddb01326d3df252879-audit.json",
+    "files": [
+        {
+            "date": 1687891510927,
+            "name": "G:\\0001_Project\\project\\fake api\\logs\\winston\\infos\\[2023-06-28-00]-info.log",
+            "hash": "74b96858de89ae3877032c9536bb38c3081154393c88009f35b406e95e481ac6"
+        }
+    ],
+    "hashType": "sha256"
+}
