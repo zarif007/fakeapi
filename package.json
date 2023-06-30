@@ -1,12 +1,12 @@
 {
   "name": "fakeapi-monorepo",
   "version": "1.0.0",
-  "description": "Generate APIs with AI & fake data",
+  "description": "FakeApi",
   "main": "src/server.ts",
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/server.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\"",
+    "dev:server": "concurrently \"npx tsc --watch\" \"nodemon -q dist/server.js\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint:check": "eslint --ignore-path .eslintignore --ext .js,.ts .",
     "lint:fix": "eslint --fix",
@@ -19,16 +19,8 @@
   "lint-staged": {
     "src/**/*.ts": "npm run lint-prettier:check"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/zarif007/ez-node-ts-express-mongoose-boilerplate.git"
-  },
   "author": "zarif",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/zarif007/ez-node-ts-express-mongoose-boilerplate/issues"
-  },
-  "homepage": "https://github.com/zarif007/ez-node-ts-express-mongoose-boilerplate#readme",
   "devDependencies": {
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",

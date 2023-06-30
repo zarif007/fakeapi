@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Paragraph from "../ui/Paragraph";
-import SliderUi from "../ui/SliderUi";
-import SwitchUi from "../ui/SwitchUi";
+import React, { useState } from 'react';
+import Paragraph from '../ui/Paragraph';
+import SliderUi from '../ui/SliderUi';
+import SwitchUi from '../ui/SwitchUi';
 
 const GeneratorSettings = () => {
   const [objectSize, setObjectSize] = useState<number>(1);
