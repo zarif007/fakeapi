@@ -24,7 +24,7 @@ const AddChildButton = ({
 
       <button
         onClick={() => setIsModalOpen(true)}
-        className={`text-slate-100 dark:text-slate-900 bg-[${color}] h-10 py-2 px-4 rounded`}
+        className={`text-slate-100 dark:text-black bg-[${color}] h-10 py-2 px-4 rounded`}
       >
         <MdOutlineAdd className="w-5 h-6" />
       </button>

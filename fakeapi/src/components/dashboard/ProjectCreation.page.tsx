@@ -8,7 +8,6 @@ import { Input } from '../ui/Input';
 import { AiOutlineApi } from 'react-icons/ai';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
-import { CreateApiData } from '@/types/api/key';
 import { CreatedProject } from '@/types/project';
 
 const ProjectCreation = () => {

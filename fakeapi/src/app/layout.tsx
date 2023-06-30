@@ -15,9 +15,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn('bg-white text-slate-900 antialiased', inter.style)}
+      className={cn('bg-white text-black antialiased', inter.style)}
     >
-      <body className="min-h-screen bg-slate-50 dark:bg-slate-900 antialiased">
+      <body className="min-h-screen bg-slate-50 dark:bg-black antialiased">
         <Providers>
           <Toaster position="bottom-right" />
           {children}
