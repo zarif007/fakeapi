@@ -4,8 +4,11 @@ import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/Tabs';
 import { GiPowerGenerator } from 'react-icons/gi';
 import { MdDataObject } from 'react-icons/md';
-import GenerateSchema from './GenerateSchema.page';
+import GenerateSchema from './GenerateSchema.Page';
 import SimpleBar from 'simplebar-react';
+import GeneratorSettings from './GeneratorSettings.Page';
+import { AiOutlineSetting } from 'react-icons/ai';
+import { VscGistSecret } from 'react-icons/vsc';
 
 const GeneratorTabs = ({ project }: { project: any }) => {
   return (
@@ -17,6 +20,12 @@ const GeneratorTabs = ({ project }: { project: any }) => {
         <TabsTrigger value="demo" className="py-2 flex space-x-2">
           <MdDataObject className="h-5 w-5" /> <p>Demo</p>
         </TabsTrigger>
+        <TabsTrigger value="credentials" className="py-2 flex space-x-2">
+          <VscGistSecret className="h-5 w-5" /> <p>Credentials</p>
+        </TabsTrigger>
+        <TabsTrigger value="settings" className="py-2 flex space-x-2">
+          <AiOutlineSetting className="h-5 w-5" /> <p>Settings</p>
+        </TabsTrigger>
       </TabsList>
       <TabsContent value="generator" className="h-full">
         <SimpleBar>
@@ -24,6 +33,10 @@ const GeneratorTabs = ({ project }: { project: any }) => {
         </SimpleBar>
       </TabsContent>
       <TabsContent value="demo"></TabsContent>
+      <TabsContent value="credentials"></TabsContent>
+      <TabsContent value="settings">
+        <GeneratorSettings />
+      </TabsContent>
     </Tabs>
   );
 };

@@ -24,7 +24,7 @@ const DisplayAddedData = ({
       className={`ml-12 border-2 ${
         showBg
           ? `border-[${colorArray[data.counter % colorArray.length]}]`
-          : 'border-slate-100 dark:border-slate-900'
+          : 'border-slate-100 dark:border-black'
       } rounded pb-2 w-fit`}
     >
       <ColorHydration />
@@ -40,7 +40,7 @@ const DisplayAddedData = ({
         >
           {(data.type === 'Object' || data.type === 'Array') && (
             <BsCaretDownFill
-              className={`w-8 h-8 text-slate-100 dark:text-slate-900 ${
+              className={`w-8 h-8 text-slate-100 dark:text-black ${
                 !showChild && '-rotate-90'
               } cursor-pointer`}
               onClick={() => setShowChild(!showChild)}
@@ -49,16 +49,16 @@ const DisplayAddedData = ({
 
           <Input
             defaultValue={data.key}
-            className="dark:bg-slate-900 bg-slate-100 font-bold text-md"
+            className="dark:bg-black bg-slate-100 font-bold text-md"
             readOnly
           />
-          <div className="text-4xl mb-2 font-bold dark:text-slate-900 text-slate-100">
+          <div className="text-4xl mb-2 font-bold dark:text-black text-slate-100">
             :
           </div>
           {data.type !== 'Object' && data.type !== 'Array' && (
             <Input
               defaultValue={data.value}
-              className="dark:bg-slate-900 bg-slate-100 font-bold text-md"
+              className="dark:bg-black bg-slate-100 font-bold text-md"
               readOnly
             />
           )}
@@ -106,7 +106,7 @@ const DisplayAddedData = ({
         </React.Fragment>
       ) : (
         <div
-          className={`text-white dark:text-slate-900 bg-[${
+          className={`text-white dark:text-black bg-[${
             colorArray[(data.counter + 1) % colorArray.length]
           }] cursor-pointer h-10 py-2 px-4 w-fit rounded ml-12`}
           onClick={() => setShowChild(true)}
@@ -135,7 +135,7 @@ const DisplayValue = ({ data }: { data: SchemaData }) => {
     >
       <Input
         defaultValue={data.value}
-        className="dark:bg-slate-900 bg-slate-100 font-bold text-md"
+        className="dark:bg-black bg-slate-100 font-bold text-md"
         readOnly
       />
     </div>

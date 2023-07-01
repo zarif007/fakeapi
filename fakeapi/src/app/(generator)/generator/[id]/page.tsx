@@ -1,5 +1,5 @@
 import GeneratorTabs from '@/components/generator/Generator.Tabs';
-import GnTopbar from '@/components/generator/GnTopbar';
+import GnTopbar from '@/components/generator/Generator.Topbar';
 import { db } from '@/lib/db';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -30,7 +30,7 @@ const Generator = async ({ params }: PageParams) => {
 
       <Link
         href="/dashboard"
-        className="flex justify-end text-blue-500 space-x-1 items-center cursor-pointer font-semibold text-md"
+        className="m-2 flex justify-end text-blue-500 space-x-1 items-center cursor-pointer font-semibold text-md"
       >
         <AiOutlineArrowLeft className="w-6 h-6" />
         <p>Back</p>

@@ -1,6 +1,0 @@
-[Mon Jun 26 2023 at 18:54:41] [no!] [31merror[39m: Failed to connect to Database MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
-[Mon Jun 26 2023 at 18:54:43] [no!] [31merror[39m: Failed to connect to Database MongooseError: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
-[Mon Jun 26 2023 at 18:56:58] [no!] [31merror[39m: Failed to connect to Database MongoServerError: bad auth : Authentication failed.
-[Mon Jun 26 2023 at 18:57:0] [no!] [31merror[39m: Failed to connect to Database MongoServerError: bad auth : Authentication failed.
-[Mon Jun 26 2023 at 18:59:23] [no!] [31merror[39m: Failed to connect to Database MongoServerError: bad auth : Authentication failed.
-[Mon Jun 26 2023 at 18:59:26] [no!] [31merror[39m: Failed to connect to Database MongoServerError: bad auth : Authentication failed.

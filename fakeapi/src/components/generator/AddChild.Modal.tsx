@@ -10,7 +10,7 @@ import { MdDataArray, MdDataObject } from 'react-icons/md';
 import { BsCardImage } from 'react-icons/bs';
 import { TbSortAscendingNumbers } from 'react-icons/tb';
 import { AiOutlineFieldBinary, AiOutlineFile } from 'react-icons/ai';
-import KeyValueComp from './DisplayAddedData.page';
+import KeyValueComp from './DisplayAddedData.Page';
 import { buttonVariants } from '../ui/Button';
 import { SchemaData } from '@/types/generator';
 
@@ -184,13 +184,13 @@ const AddChildModal = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-900 p-6 text-left align-middle shadow-xl transition-all border border-slate-900 dark:border-slate-700">
+              <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl bg-slate-100 dark:bg-black p-6 text-left align-middle shadow-xl transition-all border border-black dark:border-slate-700">
                 <div className="w-full pt-4">
-                  <div className="mx-auto w-full max-w-xl rounded-2xl bg-slate-100 dark:bg-slate-900 py-2">
+                  <div className="mx-auto w-full max-w-xl rounded-2xl bg-slate-100 dark:bg-black py-2">
                     <Disclosure as="div" className="mt-2">
                       {({ open }) => (
                         <>
-                          <Disclosure.Button className="flex h-10 w-full rounded-md border border-slate-300 bg-transparent py-2 px-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 my-2">
+                          <Disclosure.Button className="flex h-10 w-full rounded-md border border-slate-300 bg-transparent py-2 px-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-black my-2">
                             <span>Select Data Type</span>
                             <ChevronUpIcon
                               className={`${
@@ -209,7 +209,7 @@ const AddChildModal = ({
                                       type: type.name,
                                     })
                                   }
-                                  className="flex px-4 pb-2 mt-1 h-10 border rounded-md ml-2 border-slate-300 bg-transparent py-2 text-md font-semibold cursor-pointer placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 items-center space-x-2"
+                                  className="flex px-4 pb-2 mt-1 h-10 border rounded-md ml-2 border-slate-300 bg-transparent py-2 text-md font-semibold cursor-pointer placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-black items-center space-x-2"
                                 >
                                   {type.icon} <p>{type.name}</p>
                                 </Disclosure.Panel>
@@ -247,7 +247,7 @@ const AddChildModal = ({
                       <Disclosure as="div" className="mt-1">
                         {({ open }) => (
                           <>
-                            <Disclosure.Button className="flex h-10 w-full rounded-md border border-slate-300 bg-transparent py-2 px-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 my-2">
+                            <Disclosure.Button className="flex h-10 w-full rounded-md border border-slate-300 bg-transparent py-2 px-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-black my-2">
                               <span>
                                 Select Options for {keyValueData.type}
                               </span>
@@ -268,7 +268,7 @@ const AddChildModal = ({
                                         value: option.Value,
                                       })
                                     }
-                                    className="flex h-10 w-full rounded-md border border-slate-300 bg-transparent py-2 px-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 my-2 cursor-pointer"
+                                    className="flex h-10 w-full rounded-md border border-slate-300 bg-transparent py-2 px-3 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-700 dark:text-slate-50 dark:focus:ring-slate-400 dark:focus:ring-offset-black my-2 cursor-pointer"
                                   >
                                     <p>{option.Name}</p>
                                   </Disclosure.Panel>

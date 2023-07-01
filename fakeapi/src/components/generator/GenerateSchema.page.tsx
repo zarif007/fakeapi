@@ -9,7 +9,7 @@ import { dummyData } from '../../lib/dummyData';
 import { BsCaretDownFill } from 'react-icons/bs';
 import SwitchUi from '../ui/SwitchUi';
 import { ProjectInterface, SchemaData } from '@/types/generator';
-import DisplayAddedData from './DisplayAddedData.page';
+import DisplayAddedData from './DisplayAddedData.Page';
 import ShortUniqueId from 'short-unique-id';
 import { schemaToDataDecoder } from '../../lib/SchemaToDataDecoder';
 import { buttonVariants } from '@/components/ui/Button';
@@ -18,8 +18,6 @@ import axios from 'axios';
 import { toast } from '../ui/Toast';
 
 const GenerateSchema = ({ project }: { project: any }) => {
-  const [objectSize, setObjectSize] = useState<number>(1);
-
   const [schema, setSchema] = useState<SchemaData>(project.schema);
 
   const [keyIds, setKeyIds] = useState<string[]>([]);
@@ -106,44 +104,27 @@ const GenerateSchema = ({ project }: { project: any }) => {
 
   return (
     <div className="overflow-y-auto">
-      <div className="flex justify-around md:flex-row flex-col">
-        {/* Getting main object size */}
-        <div className="mx-2">
-          <Paragraph>Select object size</Paragraph>
-          <SliderUi value={objectSize} setValue={setObjectSize} />
-        </div>
-
-        {/* Switch for hover border */}
-        <div>
-          <Paragraph>Hover border</Paragraph>
-          <SwitchUi />
-        </div>
-      </div>
-
       {/* schema creation */}
       <div className="my-12">
         <Paragraph>Define Schema</Paragraph>
-        <div className="flex space-x-2 text-slate-900 dark:text-slate-50 text-4xl font-extrabold">
-          <div className="px-2 rounded bg-slate-900 dark:bg-slate-50 w-fit flex items-center justify-center space-x-2">
+        <div className="flex space-x-2 text-black dark:text-slate-50 text-4xl font-extrabold">
+          <div className="px-2 rounded bg-black dark:bg-slate-50 w-fit flex items-center justify-center space-x-2">
             <BsCaretDownFill
-              className={`w-8 h-8 text-slate-100 dark:text-slate-900 ${
+              className={`w-8 h-8 text-slate-100 dark:text-black ${
                 !showChild && '-rotate-90'
               } cursor-pointer`}
               onClick={() => setShowChild(!showChild)}
             />
             <Input
               defaultValue="data"
-              className="dark:bg-slate-900 bg-slate-100 py-1"
+              className="dark:bg-black bg-slate-100 py-1"
               readOnly
             />
-            <div className="text-4xl mb-2 font-bold dark:text-slate-900 text-slate-100">
+            <div className="text-4xl mb-2 font-bold dark:text-black text-slate-100">
               :
             </div>
           </div>
-          <div className="text-5xl flex">
-            <p>{objectSize > 1 && '['}</p>
-            <p>{'{'}</p>
-          </div>
+          <h1 className="text-5xl flex">{'[{'}</h1>
         </div>
 
         {showChild ? (
@@ -175,18 +156,15 @@ const GenerateSchema = ({ project }: { project: any }) => {
           </div>
         ) : (
           <div
-            className={`text-white dark:text-slate-900 bg-[#3f5efb] cursor-pointer h-10 py-2 px-4 w-fit rounded ml-12 my-2`}
+            className={`text-white dark:text-black bg-[#3f5efb] cursor-pointer h-10 py-2 px-4 w-fit rounded ml-12 my-2`}
             onClick={() => setShowChild(true)}
           >
             .....
           </div>
         )}
 
-        <div className="text-slate-900 dark:text-slate-50">
-          <h1 className="text-5xl font-bold">
-            {'}'}
-            {objectSize > 1 && ', ]'}
-          </h1>
+        <div className="text-black dark:text-slate-50">
+          <h1 className="text-5xl font-bold">{'}]'}</h1>
         </div>
 
         <div className="flex justify-end">
