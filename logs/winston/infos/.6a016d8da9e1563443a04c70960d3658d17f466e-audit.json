@@ -1,0 +1,30 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\Zarif\\Desktop\\projects\\fakeapi\\fakeapi\\logs\\winston\\infos\\.6a016d8da9e1563443a04c70960d3658d17f466e-audit.json",
+    "files": [
+        {
+            "date": 1688144381056,
+            "name": "C:\\Users\\Zarif\\Desktop\\projects\\fakeapi\\fakeapi\\logs\\winston\\infos\\[2023-06-30-22]-info.log",
+            "hash": "10e073a0a6c2ffeaa6657ee98ee3a241cbd2e8ccbad87cda5fc8985d7aca4c03"
+        },
+        {
+            "date": 1688144432849,
+            "name": "C:\\Users\\Zarif\\Desktop\\projects\\fakeapi\\fakeapi\\logs\\winston\\infos\\[2023-06-30-23]-info.log",
+            "hash": "6dcc713d2612ba869dc29535f998097d94683985819663c119c63cbf6eded867"
+        },
+        {
+            "date": 1688148009282,
+            "name": "C:\\Users\\Zarif\\Desktop\\projects\\fakeapi\\fakeapi\\logs\\winston\\infos\\[2023-07-01-00]-info.log",
+            "hash": "59dae1b687b8c97cd48cfe019a637af631c21d697cc3c161ae86974a9d180641"
+        },
+        {
+            "date": 1688240202941,
+            "name": "C:\\Users\\Zarif\\Desktop\\projects\\fakeapi\\fakeapi\\logs\\winston\\infos\\[2023-07-02-01]-info.log",
+            "hash": "a410608499c98a9671240f25d4c8cde70e77f37046c24c25849bf3a0663e626e"
+        }
+    ],
+    "hashType": "sha256"
+}
