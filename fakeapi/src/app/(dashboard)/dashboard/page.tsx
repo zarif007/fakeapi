@@ -6,7 +6,7 @@ import { authOptions } from '@/lib/auth';
 import { notFound } from 'next/navigation';
 import { db } from '@/lib/db';
 import ApiDashboard from '@/components/dashboard/ApiDashboard.Page';
-import ProjectCreation from '@/components/dashboard/ProjectCreation.Page';
+import ProjectCreation from '@/components/dashboard/ProjectCreation.page';
 import DashboardTabs from '@/components/dashboard/Dashboard.Tabs';
 
 export const metadata: Metadata = {
