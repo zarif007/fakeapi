@@ -2,7 +2,7 @@ import { db } from '@/lib/db';
 import React from 'react';
 import LargeHeading, { headingVariants } from '../ui/LargeHeading';
 import { notFound } from 'next/navigation';
-import ApiDashboard from '../dashboard/ApiDashboard.Page';
+import ApiDashboard from '../dashboard/ApiDashboard.page';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { ProjectInterface } from '@/types/generator';

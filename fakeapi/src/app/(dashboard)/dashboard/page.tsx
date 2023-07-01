@@ -5,7 +5,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { notFound } from 'next/navigation';
 import { db } from '@/lib/db';
-import ApiDashboard from '@/components/dashboard/ApiDashboard.Page';
+import ApiDashboard from '@/components/dashboard/ApiDashboard.page';
 import ProjectCreation from '@/components/dashboard/ProjectCreation.page';
 import DashboardTabs from '@/components/dashboard/Dashboard.Tabs';
 
