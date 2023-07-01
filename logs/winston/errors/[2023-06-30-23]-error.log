@@ -1,7 +1,4 @@
-[Fri Jun 30 2023 at 22:59:44] [no!] [31merror[39m: Failed to connect to Database MongoServerError: bad auth : authentication failed
 [Fri Jun 30 2023 at 23:0:33] [no!] [31merror[39m: Failed to connect to Database MongoServerError: bad auth : authentication failed
 [Fri Jun 30 2023 at 23:0:35] [no!] [31merror[39m: Failed to connect to Database MongoServerError: bad auth : authentication failed
 [Fri Jun 30 2023 at 23:0:53] [no!] [31merror[39m: Failed to connect to Database MongoServerError: bad auth : authentication failed
 [Fri Jun 30 2023 at 23:0:55] [no!] [31merror[39m: Failed to connect to Database MongoServerError: bad auth : authentication failed
-[Sun Jul 02 2023 at 1:42:25] [no!] [31merror[39m: Failed to connect to Database MongoServerError: bad auth : Authentication failed.
-[Sun Jul 02 2023 at 1:42:28] [no!] [31merror[39m: Failed to connect to Database MongoServerError: bad auth : Authentication failed.

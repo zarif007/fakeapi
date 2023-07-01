@@ -1,10 +1,12 @@
-import { Types } from "mongoose";
+import { Model, Types } from "mongoose";
 
 export type IGenerator = {
     name: string;
     apiKey: string;
-    enabled: string;
+    enabled: boolean;
     author: Types.ObjectId;
     contributors: Types.ObjectId[];
-    schema: string;
+    bluePrint: Types.ObjectId;
 }
+
+export type IGeneratorModel = Model<IGenerator, Record<string, unknown>>
