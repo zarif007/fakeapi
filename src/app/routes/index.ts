@@ -5,7 +5,7 @@ const router = Router();
 
 const moduleRoutes = [
   {
-    path: 'generator',
+    path: '/generator',
     route: GeneratorRoutes,
   },
 ];

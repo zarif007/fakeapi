@@ -5,7 +5,7 @@ const generator_route_1 = require("../modules/generator/generator.route");
 const router = (0, express_1.Router)();
 const moduleRoutes = [
     {
-        path: 'generator',
+        path: '/generator',
         route: generator_route_1.GeneratorRoutes,
     },
 ];
