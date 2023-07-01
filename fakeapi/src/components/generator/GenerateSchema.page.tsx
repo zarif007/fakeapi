@@ -1,19 +1,15 @@
 'use client';
 
-import React, { FC, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Paragraph from '../ui/Paragraph';
-import SliderUi from '../ui/SliderUi';
 import AddChildButton from './AddChild.Button';
 import { Input } from '../ui/Input';
-import { dummyData } from '../../lib/dummyData';
 import { BsCaretDownFill } from 'react-icons/bs';
-import SwitchUi from '../ui/SwitchUi';
-import { ProjectInterface, SchemaData } from '@/types/generator';
+import { SchemaData } from '@/types/generator';
 import DisplayAddedData from './DisplayAddedData.Page';
 import ShortUniqueId from 'short-unique-id';
 import { schemaToDataDecoder } from '../../lib/SchemaToDataDecoder';
 import { buttonVariants } from '@/components/ui/Button';
-import { db } from '@/lib/db';
 import axios from 'axios';
 import { toast } from '../ui/Toast';
 

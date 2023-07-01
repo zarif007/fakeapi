@@ -77,7 +77,7 @@ const ProjectCreation = () => {
             required
             className="font-semibold w-full"
             defaultValue={projectName ?? ''}
-            placeholder="Porject Name"
+            placeholder="Project Name"
             onChange={e => setProjectName(e.target.value)}
           />
         </div>
