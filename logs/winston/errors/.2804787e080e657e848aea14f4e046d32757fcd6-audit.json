@@ -24,6 +24,11 @@
             "date": 1688240202951,
             "name": "C:\\Users\\Zarif\\Desktop\\projects\\fakeapi\\fakeapi\\logs\\winston\\errors\\[2023-07-02-01]-error.log",
             "hash": "3051f40f82c3f3184a6d2e38199ea9db52f0582ca15f9ef9b813a65a0bb0ee9c"
+        },
+        {
+            "date": 1688245848667,
+            "name": "C:\\Users\\Zarif\\Desktop\\projects\\fakeapi\\fakeapi\\logs\\winston\\errors\\[2023-07-02-03]-error.log",
+            "hash": "6373824a417e2931309581df7f59a35be858765dc605f0adb5fb7dbe22472022"
         }
     ],
     "hashType": "sha256"
