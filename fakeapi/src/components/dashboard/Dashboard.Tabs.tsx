@@ -3,7 +3,6 @@
 import React, { FC } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/Tabs';
 import ProjectCreation from './ProjectCreation.Page';
-import ApiDashboard from './ApiDashboard.Page';
 import { BsDatabaseAdd } from 'react-icons/bs';
 import { IoStatsChartOutline } from 'react-icons/io5';
 import { VscFileBinary } from 'react-icons/vsc';
@@ -26,12 +25,7 @@ const DashboardTabs: FC = () => {
         <ProjectCreation />
       </TabsContent>
       <TabsContent value="projects"></TabsContent>
-      <TabsContent value="stats">
-        {/* {
-            // @ts-expect-error server Component
-            <ApiDashboard />
-        } */}
-      </TabsContent>
+      <TabsContent value="stats"></TabsContent>
     </Tabs>
   );
 };
