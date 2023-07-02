@@ -12,8 +12,8 @@ import { VscGistSecret } from 'react-icons/vsc';
 
 const GeneratorTabs = ({ project }: { project: any }) => {
   const styles = {
-    iconStyle: 'h-5 w-5',
-    tabsTriggerStyle: 'py-2 flex space-x-2',
+    iconStyle: `h-5 w-5`,
+    tabsTriggerStyle: `py-2 flex space-x-2`,
   };
   return (
     <Tabs defaultValue="generator" className="overflow-x-auto">
