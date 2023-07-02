@@ -4,7 +4,7 @@ import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/Tabs';
 import { GiPowerGenerator } from 'react-icons/gi';
 import { MdDataObject } from 'react-icons/md';
-import GenerateSchema from './GenerateSchema.Page';
+import GenerateSchema from './GenerateSchema';
 import SimpleBar from 'simplebar-react';
 import GeneratorSettings from './GeneratorSettings.Page';
 import { AiOutlineSetting } from 'react-icons/ai';
