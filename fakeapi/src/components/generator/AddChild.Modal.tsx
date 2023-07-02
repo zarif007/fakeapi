@@ -10,7 +10,7 @@ import { MdDataArray, MdDataObject } from 'react-icons/md';
 import { BsCardImage } from 'react-icons/bs';
 import { TbSortAscendingNumbers } from 'react-icons/tb';
 import { AiOutlineFieldBinary, AiOutlineFile } from 'react-icons/ai';
-import KeyValueComp from './DisplayAddedData.Page';
+import KeyValueComp from './DisplayAddedData';
 import { buttonVariants } from '../ui/Button';
 import { SchemaData } from '@/types/generator';
 
