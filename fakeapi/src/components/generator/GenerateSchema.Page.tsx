@@ -6,7 +6,7 @@ import AddChildButton from './AddChild.Button';
 import { Input } from '../ui/Input';
 import { BsCaretDownFill } from 'react-icons/bs';
 import { SchemaData } from '@/types/generator';
-import DisplayAddedData from './DisplayAddedData';
+import DisplayAddedData from './DisplayAddedData.Page';
 import ShortUniqueId from 'short-unique-id';
 import { schemaToDataDecoder } from '../../lib/SchemaToDataDecoder';
 import { buttonVariants } from '@/components/ui/Button';
