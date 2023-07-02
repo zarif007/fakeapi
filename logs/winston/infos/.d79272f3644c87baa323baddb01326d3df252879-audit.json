@@ -1,20 +1,20 @@
 {
-    "keep": {
-        "days": true,
-        "amount": 14
+  "keep": {
+    "days": true,
+    "amount": 14
+  },
+  "auditLog": "G:\\0001_Project\\project\\fake api\\logs\\winston\\infos\\.d79272f3644c87baa323baddb01326d3df252879-audit.json",
+  "files": [
+    {
+      "date": 1687891510927,
+      "name": "G:\\0001_Project\\project\\fake api\\logs\\winston\\infos\\[2023-06-28-00]-info.log",
+      "hash": "74b96858de89ae3877032c9536bb38c3081154393c88009f35b406e95e481ac6"
     },
-    "auditLog": "G:\\0001_Project\\project\\fake api\\logs\\winston\\infos\\.d79272f3644c87baa323baddb01326d3df252879-audit.json",
-    "files": [
-        {
-            "date": 1687891510927,
-            "name": "G:\\0001_Project\\project\\fake api\\logs\\winston\\infos\\[2023-06-28-00]-info.log",
-            "hash": "74b96858de89ae3877032c9536bb38c3081154393c88009f35b406e95e481ac6"
-        },
-        {
-            "date": 1688241067748,
-            "name": "G:\\0001_Project\\project\\fake api\\logs\\winston\\infos\\[2023-07-02-01]-info.log",
-            "hash": "1e53d3e970e5f1b6386ee06c99028d05c6e4289f19001a50612e3489b9bccee0"
-        }
-    ],
-    "hashType": "sha256"
+    {
+      "date": 1688241067748,
+      "name": "G:\\0001_Project\\project\\fake api\\logs\\winston\\infos\\[2023-07-02-01]-info.log",
+      "hash": "1e53d3e970e5f1b6386ee06c99028d05c6e4289f19001a50612e3489b9bccee0"
+    }
+  ],
+  "hashType": "sha256"
 }

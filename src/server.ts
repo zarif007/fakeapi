@@ -19,7 +19,7 @@ const main = async () => {
     errorLogger.error(`Failed to connect to Database ${err}`);
   }
 
-  // handling Gracefully shutting off the server for unhandledRejection
+  // Handling Gracefully shutting off the server for unhandledRejection
   process.on('unhandledRejection', error => {
     if (server) {
       server.close(() => {
@@ -34,13 +34,13 @@ const main = async () => {
 
 main();
 
-// handling shutting off the server for uncaughtException
+// Handling shutting off the server for uncaughtException
 process.on('uncaughtException', error => {
   errorLogger.error(error);
   process.exit(1);
 });
 
-// handling signal for termination
+// Handling signal for termination
 process.on('SIGTERM', () => {
   infoLogger.info('SIGTERM received');
   if (server) {
