@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/v1', routes);
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Hell0000o');
+  res.send('Hell000088o');
 });
 
 // Global error handler
