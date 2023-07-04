@@ -1,10 +1,11 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.GeneratorRoutes = void 0;
-const express_1 = require('express');
+const express_1 = require("express");
+const generator_controller_1 = require("./generator.controller");
 const router = (0, express_1.Router)();
-router.get('/');
-router.get('/:id');
+router.get('/', generator_controller_1.GeneratorController.getGenerators);
+router.get('/:id', generator_controller_1.GeneratorController.getSingleGenerator);
 router.post('/:id');
 router.delete('/:id');
 router.patch('/:id');

@@ -1,20 +1,30 @@
 {
-  "keep": {
-    "days": true,
-    "amount": 14
-  },
-  "auditLog": "G:\\0001_Project\\project\\fake api\\logs\\winston\\errors\\.954da28a1f70c8dc4a099b334e969a7bfe7220ee-audit.json",
-  "files": [
-    {
-      "date": 1687891511009,
-      "name": "G:\\0001_Project\\project\\fake api\\logs\\winston\\errors\\[2023-06-28-00]-error.log",
-      "hash": "6bbd93c302faeb5a28878f179329edcf974815d9e445fcfca4cffa8e02ab4ab8"
+    "keep": {
+        "days": true,
+        "amount": 14
     },
-    {
-      "date": 1688241067899,
-      "name": "G:\\0001_Project\\project\\fake api\\logs\\winston\\errors\\[2023-07-02-01]-error.log",
-      "hash": "7f67f628cee1f7be318c2225003ad6dc4a982b1d445a0f991ece50030c131c3b"
-    }
-  ],
-  "hashType": "sha256"
+    "auditLog": "G:\\0001_Project\\project\\fake api\\logs\\winston\\errors\\.954da28a1f70c8dc4a099b334e969a7bfe7220ee-audit.json",
+    "files": [
+        {
+            "date": 1687891511009,
+            "name": "G:\\0001_Project\\project\\fake api\\logs\\winston\\errors\\[2023-06-28-00]-error.log",
+            "hash": "6bbd93c302faeb5a28878f179329edcf974815d9e445fcfca4cffa8e02ab4ab8"
+        },
+        {
+            "date": 1688241067899,
+            "name": "G:\\0001_Project\\project\\fake api\\logs\\winston\\errors\\[2023-07-02-01]-error.log",
+            "hash": "7f67f628cee1f7be318c2225003ad6dc4a982b1d445a0f991ece50030c131c3b"
+        },
+        {
+            "date": 1688488567556,
+            "name": "G:\\0001_Project\\project\\fake api\\logs\\winston\\errors\\[2023-07-04-22]-error.log",
+            "hash": "38f67beef40be18f65497fbb361386689ef3f06c378fa7c4f5244386a4bd117d"
+        },
+        {
+            "date": 1688490488040,
+            "name": "G:\\0001_Project\\project\\fake api\\logs\\winston\\errors\\[2023-07-04-23]-error.log",
+            "hash": "e43a5f270902148f7d809049df28309047eacf6f5d5e13a1f9117dc5afdb2a2d"
+        }
+    ],
+    "hashType": "sha256"
 }
