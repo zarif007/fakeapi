@@ -36,7 +36,30 @@ const getSingleGenerator = (0, catchAsync_1.default)((req, res) => __awaiter(voi
         data: result,
     });
 }));
+const createGenerator = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const generator = req.body;
+    const result = yield generator_service_1.GeneratorService.createGenerator(generator);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.CREATED,
+        success: true,
+        message: 'Generator created successfully !',
+        data: result,
+    });
+}));
+const updateGenerator = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const Generator = req.body;
+    const { id } = req.params;
+    const result = yield generator_service_1.GeneratorService.updateGenerator(id, Generator);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'Generator updated successfully !',
+        data: result,
+    });
+}));
 exports.GeneratorController = {
     getGenerators,
     getSingleGenerator,
+    createGenerator,
+    updateGenerator,
 };

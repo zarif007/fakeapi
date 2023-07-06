@@ -13,7 +13,7 @@ const GeneratorSchema = new mongoose_1.Schema({
     },
     enabled: {
         type: Boolean,
-        required: [true, 'Enabled is required'],
+        default: true,
     },
     author: {
         type: mongoose_1.Schema.Types.ObjectId,
@@ -28,7 +28,7 @@ const GeneratorSchema = new mongoose_1.Schema({
     bluePrint: {
         type: mongoose_1.Schema.Types.ObjectId,
         ref: 'BluePrint',
-        required: [true, 'Blue Print is required'],
+        default: {},
     },
 }, {
     timestamps: true,

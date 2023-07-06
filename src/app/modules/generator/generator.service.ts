@@ -1,3 +1,4 @@
+import { BluePrintService } from '../bluePrint/bluePrint.service';
 import { IGenerator } from './generator.interface';
 import { Generator } from './generator.model';
 
@@ -19,7 +20,39 @@ const getSingleGenerator = async (id: string): Promise<IGenerator | null> => {
   return result;
 };
 
+const createGenerator = async (
+  payload: IGenerator
+): Promise<IGenerator | null> => {
+  const bluePrintResult = await BluePrintService.createBluePrint({});
+  const result = await Generator.create({
+    ...payload,
+    bluePrint: bluePrintResult._id,
+  });
+  return result;
+};
+
+const updateGenerator = async (
+  id: string,
+  payload: Partial<IGenerator>
+): Promise<IGenerator | null> => {
+  const result = await Generator.findOneAndUpdate({ _id: id }, payload, {
+    new: true,
+  });
+  return result;
+};
+
+const deleteGenerator = async (
+  id: string,
+  payload: Partial<IGenerator | null>
+): Promise<IGenerator | null> => {
+  const result = await Generator.findByIdAndDelete({ _id: id }, payload);
+  return result;
+};
+
 export const GeneratorService = {
   getGenerators,
   getSingleGenerator,
+  updateGenerator,
+  createGenerator,
+  deleteGenerator,
 };

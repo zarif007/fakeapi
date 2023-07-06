@@ -13,7 +13,7 @@ const GeneratorSchema = new Schema<IGenerator, IGeneratorModel>(
     },
     enabled: {
       type: Boolean,
-      required: [true, 'Enabled is required'],
+      default: true,
     },
     author: {
       type: Schema.Types.ObjectId,
@@ -28,7 +28,7 @@ const GeneratorSchema = new Schema<IGenerator, IGeneratorModel>(
     bluePrint: {
       type: Schema.Types.ObjectId,
       ref: 'BluePrint',
-      required: [true, 'Blue Print is required'],
+      default: {},
     },
   },
   {

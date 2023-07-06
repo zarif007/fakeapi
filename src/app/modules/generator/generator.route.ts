@@ -5,8 +5,8 @@ const router = Router();
 
 router.get('/', GeneratorController.getGenerators);
 router.get('/:id', GeneratorController.getSingleGenerator);
-router.post('/:id');
+router.post('/', GeneratorController.createGenerator);
 router.delete('/:id');
-router.patch('/:id');
+router.patch('/:id', GeneratorController.updateGenerator);
 
 export const GeneratorRoutes = router;

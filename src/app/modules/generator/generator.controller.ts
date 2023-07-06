@@ -25,7 +25,32 @@ const getSingleGenerator = catchAsync(async (req, res) => {
   });
 });
 
+const createGenerator = catchAsync(async (req, res) => {
+  const generator = req.body;
+  const result = await GeneratorService.createGenerator(generator);
+  sendResponse<IGenerator>(res, {
+    statusCode: httpStatus.CREATED,
+    success: true,
+    message: 'Generator created successfully !',
+    data: result,
+  });
+});
+
+const updateGenerator = catchAsync(async (req, res) => {
+  const Generator = req.body;
+  const { id } = req.params;
+  const result = await GeneratorService.updateGenerator(id, Generator);
+  sendResponse<IGenerator>(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: 'Generator updated successfully !',
+    data: result,
+  });
+});
+
 export const GeneratorController = {
   getGenerators,
   getSingleGenerator,
+  createGenerator,
+  updateGenerator,
 };
