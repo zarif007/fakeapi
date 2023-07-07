@@ -9,24 +9,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BluePrintService = void 0;
-const bluePrint_model_1 = require("./bluePrint.model");
-const createBluePrint = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield bluePrint_model_1.BluePrint.create(payload);
+exports.UserService = void 0;
+const user_model_1 = require("./user.model");
+const getSingleUser = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_model_1.User.findById(id).populate('generators');
     return result;
 });
-const updateBluePrint = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield bluePrint_model_1.BluePrint.findOneAndUpdate({ _id: id }, payload, {
+const createUser = (payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_model_1.User.create(payload);
+    return result;
+});
+const updateUser = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_model_1.User.findOneAndUpdate({ _id: id }, payload, {
         new: true,
     });
     return result;
 });
-const deleteBluePrint = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield bluePrint_model_1.BluePrint.findByIdAndDelete({ _id: id });
+const deleteUser = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_model_1.User.findByIdAndDelete({ _id: id });
     return result;
 });
-exports.BluePrintService = {
-    createBluePrint,
-    updateBluePrint,
-    deleteBluePrint,
+exports.UserService = {
+    getSingleUser,
+    updateUser,
+    createUser,
+    deleteUser,
 };

@@ -29,6 +29,9 @@ const getSingleGenerator = (id) => __awaiter(void 0, void 0, void 0, function* (
 const createGenerator = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     const bluePrintResult = yield bluePrint_service_1.BluePrintService.createBluePrint({});
     const result = yield generator_model_1.Generator.create(Object.assign(Object.assign({}, payload), { bluePrint: bluePrintResult._id }));
+    yield result.populate('author');
+    yield result.populate('contributors');
+    yield result.populate('bluePrint');
     return result;
 });
 const updateGenerator = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
@@ -37,8 +40,8 @@ const updateGenerator = (id, payload) => __awaiter(void 0, void 0, void 0, funct
     });
     return result;
 });
-const deleteGenerator = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield generator_model_1.Generator.findByIdAndDelete({ _id: id }, payload);
+const deleteGenerator = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield generator_model_1.Generator.findByIdAndDelete({ _id: id });
     return result;
 });
 exports.GeneratorService = {

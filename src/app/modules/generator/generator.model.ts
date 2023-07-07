@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose';
 import { IGenerator, IGeneratorModel } from './generator.interface';
+import { generateApiKey } from './generator.utils';
 
 const GeneratorSchema = new Schema<IGenerator, IGeneratorModel>(
   {
@@ -9,7 +10,7 @@ const GeneratorSchema = new Schema<IGenerator, IGeneratorModel>(
     },
     apiKey: {
       type: String,
-      required: [true, 'ApiKey is required'],
+      unique: true,
     },
     enabled: {
       type: Boolean,
@@ -38,6 +39,12 @@ const GeneratorSchema = new Schema<IGenerator, IGeneratorModel>(
     },
   }
 );
+
+GeneratorSchema.pre('save', function (next) {
+  this.contributors = [this.author];
+  this.apiKey = generateApiKey();
+  next();
+});
 
 export const Generator = model<IGenerator, IGeneratorModel>(
   'Generator',

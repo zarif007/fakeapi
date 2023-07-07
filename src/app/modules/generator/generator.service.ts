@@ -28,6 +28,10 @@ const createGenerator = async (
     ...payload,
     bluePrint: bluePrintResult._id,
   });
+
+  await result.populate('author');
+  await result.populate('contributors');
+  await result.populate('bluePrint');
   return result;
 };
 
@@ -41,11 +45,8 @@ const updateGenerator = async (
   return result;
 };
 
-const deleteGenerator = async (
-  id: string,
-  payload: Partial<IGenerator | null>
-): Promise<IGenerator | null> => {
-  const result = await Generator.findByIdAndDelete({ _id: id }, payload);
+const deleteGenerator = async (id: string): Promise<IGenerator | null> => {
+  const result = await Generator.findByIdAndDelete({ _id: id });
   return result;
 };
 

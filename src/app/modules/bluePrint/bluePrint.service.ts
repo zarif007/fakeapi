@@ -16,11 +16,8 @@ const updateBluePrint = async (
   return result;
 };
 
-const deleteBluePrint = async (
-  id: string,
-  payload: Partial<IBluePrint | null>
-): Promise<IBluePrint | null> => {
-  const result = await BluePrint.findByIdAndDelete({ _id: id }, payload);
+const deleteBluePrint = async (id: string): Promise<IBluePrint | null> => {
+  const result = await BluePrint.findByIdAndDelete({ _id: id });
   return result;
 };
 
